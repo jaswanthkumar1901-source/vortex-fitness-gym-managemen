@@ -1,0 +1,780 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* =========================================
+   VORTEX FITNESS — MEMBER PAGES
+   Ivory | Charcoal | Lime
+========================================= */
+
+:root {
+    --vortex-black: #171916;
+    --vortex-charcoal: #232722;
+    --vortex-dark: #10120F;
+    --vortex-ivory: #F5F4EE;
+    --vortex-white: #FFFFFF;
+    --vortex-lime: #C6F36B;
+    --vortex-lime-dark: #9BBF48;
+    --vortex-muted: #73796F;
+    --vortex-border: #E4E6DE;
+    --vortex-soft: #EBEEE5;
+    --vortex-danger: #B94D40;
+    --vortex-danger-soft: #FAEEEA;
+
+    --radius-small: 16px;
+    --radius-card: 26px;
+    --radius-large: 34px;
+    --radius-pill: 999px;
+
+    --shadow-soft: 0 10px 35px rgba(23,25,22,.06);
+    --shadow-hover: 0 18px 42px rgba(23,25,22,.10);
+}
+
+.member-add-page,
+.member-add-page *,
+.member-delete-page,
+.member-delete-page *,
+.home-footer,
+.home-footer * {
+    box-sizing: border-box;
+}
+
+.member-add-page,
+.member-delete-page {
+    min-height: calc(100vh - 80px);
+    padding: 45px max(5%, calc((100% - 1100px) / 2)) 70px;
+    background: var(--vortex-ivory);
+    color: var(--vortex-black);
+    font-family: 'Inter', Arial, sans-serif;
+    line-height: 1.7;
+}
+
+.member-add-page a,
+.member-delete-page a {
+    text-decoration: none;
+}
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.member-page-kicker {
+    margin: 0 0 10px;
+    color: #718D3D;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.member-add-header {
+    max-width: 1100px;
+    margin: 0 auto 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.member-add-header h1 {
+    margin: 0 0 8px;
+    color: var(--vortex-black);
+    font-size: clamp(29px, 4vw, 40px);
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: -1.4px;
+}
+
+.member-add-header > div > p:last-child {
+    margin: 0;
+    color: var(--vortex-muted);
+    font-size: 13px;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.member-back-button,
+.member-cancel-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 11px 19px;
+
+    color: var(--vortex-black);
+    background: var(--vortex-white);
+    border: 1px solid var(--vortex-border);
+    border-radius: var(--radius-pill);
+
+    font-size: 11px;
+    font-weight: 800;
+    white-space: nowrap;
+
+    transition: background .2s ease,
+                border-color .2s ease,
+                transform .2s ease;
+}
+
+.member-back-button:hover,
+.member-cancel-button:hover {
+    background: var(--vortex-soft);
+    border-color: #CBD0C2;
+    transform: translateY(-1px);
+}
+
+/* =========================================
+   ADD MEMBER CARD
+========================================= */
+
+.member-add-card {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    overflow: hidden;
+
+    background: var(--vortex-white);
+    border: 1px solid var(--vortex-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
+}
+
+.member-add-card-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 26px 28px;
+    border-bottom: 1px solid var(--vortex-border);
+}
+
+.member-add-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 53px;
+    height: 53px;
+
+    color: var(--vortex-black);
+    background: var(--vortex-lime);
+    border-radius: 18px;
+
+    font-size: 27px;
+    font-weight: 600;
+}
+
+.member-add-card-header h2 {
+    margin: 0 0 5px;
+    color: var(--vortex-black);
+    font-size: 19px;
+    font-weight: 900;
+    letter-spacing: -.4px;
+}
+
+.member-add-card-header p {
+    margin: 0;
+    color: var(--vortex-muted);
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+/* =========================================
+   FORM
+========================================= */
+
+.member-add-form {
+    display: grid;
+    gap: 21px;
+    padding: 28px;
+}
+
+.member-add-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+    margin: 0;
+}
+
+.member-add-group label {
+    display: block;
+    color: var(--vortex-black);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.member-add-group label span {
+    color: var(--vortex-danger);
+}
+
+.member-add-group input,
+.member-add-group textarea,
+.member-add-group select {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    padding: 12px 15px;
+
+    color: var(--vortex-black);
+    background: var(--vortex-white);
+    border: 1px solid #DDE1D6;
+    border-radius: var(--radius-small);
+
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.6;
+    outline: none;
+
+    transition: border-color .2s ease,
+                box-shadow .2s ease,
+                background .2s ease;
+}
+
+.member-add-group input,
+.member-add-group select {
+    min-height: 48px;
+}
+
+.member-add-group textarea {
+    min-height: 115px;
+    resize: vertical;
+}
+
+.member-add-group input::placeholder,
+.member-add-group textarea::placeholder {
+    color: #989D93;
+    opacity: 1;
+}
+
+.member-add-group input:focus,
+.member-add-group textarea:focus,
+.member-add-group select:focus {
+    border-color: var(--vortex-lime-dark);
+    box-shadow: 0 0 0 4px rgba(198,243,107,.22);
+}
+
+.member-add-group input[type="date"] {
+    color-scheme: light;
+}
+
+.member-add-group input:disabled,
+.member-add-group textarea:disabled,
+.member-add-group select:disabled {
+    background: #F0F1EC;
+    color: #81867D;
+    cursor: not-allowed;
+}
+
+.member-field-help {
+    color: var(--vortex-muted);
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+/* =========================================
+   ERROR MESSAGE
+========================================= */
+
+.form-error,
+.member-form-error {
+    padding: 14px 17px;
+    color: #8E352B;
+    background: var(--vortex-danger-soft);
+    border: 1px solid #F0D9D2;
+    border-radius: var(--radius-small);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* =========================================
+   FORM ACTIONS
+========================================= */
+
+.member-add-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 5px;
+    padding-top: 24px;
+    border-top: 1px solid var(--vortex-border);
+}
+
+.member-submit-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 47px;
+    padding: 12px 23px;
+
+    color: var(--vortex-black);
+    background: var(--vortex-lime);
+    border: 1px solid var(--vortex-lime);
+    border-radius: var(--radius-pill);
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 900;
+    cursor: pointer;
+
+    transition: background .2s ease,
+                transform .2s ease,
+                box-shadow .2s ease;
+}
+
+.member-submit-button:hover {
+    background: #B6E75B;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(155,191,72,.20);
+}
+
+.member-submit-button:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* =========================================
+   DELETE MEMBER PAGE
+========================================= */
+
+.member-delete-card {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 32px;
+
+    background: var(--vortex-white);
+    border: 1px solid var(--vortex-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+}
+
+.member-delete-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 58px;
+    height: 58px;
+    margin: 0 auto 17px;
+
+    color: var(--vortex-danger);
+    background: var(--vortex-danger-soft);
+    border: 1px solid #F0D9D2;
+    border-radius: 20px;
+
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.member-delete-card h2 {
+    margin: 0 0 10px;
+    color: var(--vortex-black);
+    font-size: 23px;
+    font-weight: 900;
+    letter-spacing: -.5px;
+}
+
+.member-delete-message {
+    margin: 0;
+    color: var(--vortex-muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.member-delete-message strong {
+    color: var(--vortex-black);
+}
+
+.member-delete-warning {
+    margin: 22px 0;
+    padding: 14px 16px;
+
+    color: #8E352B;
+    background: var(--vortex-danger-soft);
+    border: 1px solid #F0D9D2;
+    border-radius: var(--radius-small);
+
+    font-size: 12px;
+    line-height: 1.7;
+    text-align: left;
+}
+
+.member-delete-info {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 12px;
+    margin-top: 22px;
+    padding: 16px;
+
+    background: #F8F8F3;
+    border: 1px solid var(--vortex-border);
+    border-radius: var(--radius-small);
+    text-align: left;
+}
+
+.member-delete-detail {
+    min-width: 0;
+    padding: 8px;
+}
+
+.member-delete-detail span {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--vortex-muted);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.member-delete-detail strong {
+    display: block;
+    color: var(--vortex-black);
+    font-size: 12px;
+    overflow-wrap: anywhere;
+}
+
+.member-delete-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 26px;
+}
+
+.member-delete-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 11px 20px;
+
+    color: #FFFFFF;
+    background: var(--vortex-danger);
+    border: 1px solid var(--vortex-danger);
+    border-radius: var(--radius-pill);
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 900;
+    cursor: pointer;
+
+    transition: background .2s ease,
+                transform .2s ease;
+}
+
+.member-delete-button:hover {
+    background: #963B31;
+    transform: translateY(-1px);
+}
+
+/* =========================================
+   SHARED FOOTER
+   Existing home page footer classes
+========================================= */
+
+.home-footer {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    align-items: center;
+    gap: 25px;
+
+    padding: 35px max(5%, calc((100% - 1180px) / 2)) 24px;
+
+    color: var(--vortex-black);
+    background: var(--vortex-white);
+    border-top: 1px solid var(--vortex-border);
+
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+.footer-brand {
+    min-width: 0;
+}
+
+.footer-logo,
+.home-footer .home-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    color: var(--vortex-black);
+    font-size: 19px;
+    font-weight: 900;
+    letter-spacing: -.6px;
+}
+
+.footer-logo span,
+.home-footer .home-logo span {
+    color: #718D3D;
+}
+
+.footer-brand > p {
+    margin: 6px 0 0;
+    color: var(--vortex-muted);
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.footer-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+}
+
+.footer-links a {
+    color: #5E645B;
+    font-size: 11px;
+    font-weight: 700;
+    transition: color .2s ease;
+}
+
+.footer-links a:hover {
+    color: #718D3D;
+}
+
+.footer-links a:focus-visible {
+    outline: 3px solid var(--vortex-lime-dark);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+.footer-bottom {
+    grid-column: 1 / -1;
+    padding-top: 20px;
+    border-top: 1px solid var(--vortex-border);
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: #81867D;
+    font-size: 10px;
+    line-height: 1.8;
+}
+
+/* Optional social links */
+
+.footer-socials {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.footer-socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+
+    color: var(--vortex-black);
+    background: var(--vortex-ivory);
+    border: 1px solid var(--vortex-border);
+    border-radius: 50%;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    transition: background .2s ease,
+                transform .2s ease;
+}
+
+.footer-socials a:hover {
+    background: var(--vortex-lime);
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+.member-add-page a:focus-visible,
+.member-add-page button:focus-visible,
+.member-add-page input:focus-visible,
+.member-add-page textarea:focus-visible,
+.member-add-page select:focus-visible,
+.member-delete-page a:focus-visible,
+.member-delete-page button:focus-visible {
+    outline: 3px solid var(--vortex-lime-dark);
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .member-add-page *,
+    .member-delete-page *,
+    .home-footer * {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+    .member-add-page,
+    .member-delete-page {
+        padding-right: 5%;
+        padding-left: 5%;
+    }
+
+    .member-add-header {
+        align-items: flex-start;
+    }
+
+    .home-footer {
+        gap: 22px;
+    }
+
+    .footer-links {
+        gap: 12px 16px;
+    }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+    .member-add-page,
+    .member-delete-page {
+        padding: 28px 5% 48px;
+    }
+
+    .member-add-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .member-add-header h1 {
+        font-size: 30px;
+        letter-spacing: -1px;
+    }
+
+    .member-add-card {
+        max-width: 100%;
+        border-radius: 22px;
+    }
+
+    .member-add-card-header {
+        padding: 21px;
+    }
+
+    .member-add-form {
+        gap: 20px;
+        padding: 21px;
+    }
+
+    .member-add-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .member-cancel-button,
+    .member-submit-button {
+        width: 100%;
+        min-height: 46px;
+        text-align: center;
+    }
+
+    .member-delete-card {
+        padding: 24px;
+        border-radius: 22px;
+    }
+
+    .member-delete-info {
+        grid-template-columns: 1fr;
+    }
+
+    .member-delete-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .member-delete-actions .member-cancel-button,
+    .member-delete-button {
+        width: 100%;
+    }
+
+    .home-footer {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        padding: 30px 6% 22px;
+    }
+
+    .footer-links {
+        justify-content: flex-start;
+        gap: 13px 20px;
+    }
+
+    .footer-bottom {
+        grid-column: auto;
+    }
+}
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media (max-width: 420px) {
+    .member-add-page,
+    .member-delete-page {
+        padding: 24px 15px 38px;
+    }
+
+    .member-add-header h1 {
+        font-size: 27px;
+    }
+
+    .member-add-card-header {
+        gap: 12px;
+        padding: 18px;
+    }
+
+    .member-add-icon {
+        width: 45px;
+        height: 45px;
+        border-radius: 15px;
+    }
+
+    .member-add-card-header h2 {
+        font-size: 16px;
+    }
+
+    .member-add-card-header p {
+        font-size: 11px;
+    }
+
+    .member-add-form {
+        padding: 18px;
+    }
+
+    .member-add-group input,
+    .member-add-group textarea,
+    .member-add-group select {
+        padding: 12px;
+        font-size: 12px;
+    }
+
+    .member-delete-card {
+        padding: 20px;
+    }
+
+    .footer-links {
+        gap: 12px 16px;
+    }
+}

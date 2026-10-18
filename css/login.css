@@ -1,0 +1,1399 @@
+/* =========================================================
+   VORTEX FITNESS — LOGIN PAGE
+   CSS matched to the existing auth/login.php markup
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --login-bg: #050505;
+    --panel-bg: #080808;
+    --input-bg: #0b0b0b;
+    --text: #f7f7f7;
+    --muted: #a0a0a0;
+    --subtle: #737373;
+    --border: #242424;
+    --accent: #c6f36b;
+    --accent-hover: #d5ff82;
+    --danger: #ff8585;
+    --success: #9de6a9;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    min-height: 100%;
+    color-scheme: dark;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: var(--login-bg);
+    color: var(--text);
+    font-family: 'Inter', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+a,
+input {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* =========================================================
+   DECORATIVE BACKGROUND
+   ========================================================= */
+
+.gym-background {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse at 14% 18%, rgba(20, 73, 94, .30), transparent 42%),
+        radial-gradient(ellipse at 85% 82%, rgba(105, 54, 32, .16), transparent 38%),
+        #050505;
+}
+
+.background-glow {
+    position: absolute;
+    width: 42vw;
+    height: 42vw;
+    min-width: 280px;
+    min-height: 280px;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: .15;
+}
+
+.glow-left {
+    top: -20%;
+    left: -14%;
+    background: #07536a;
+}
+
+.glow-right {
+    top: 25%;
+    right: -20%;
+    background: #1b5b43;
+}
+
+.glow-bottom {
+    bottom: -35%;
+    left: 28%;
+    background: #75422d;
+}
+
+.background-grid {
+    position: absolute;
+    inset: 0;
+    opacity: .12;
+    background-image:
+        linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: linear-gradient(to bottom, black, transparent 88%);
+}
+
+/* The original markup contains decorative gym objects.
+   Keep them subtle so they do not compete with the form. */
+
+.gym-object,
+.weight-plate,
+.metal-sphere,
+.energy-ring,
+.ambient-particle {
+    position: absolute;
+    pointer-events: none;
+}
+
+.dumbbell {
+    width: 180px;
+    height: 42px;
+    opacity: .15;
+    filter: drop-shadow(0 18px 25px rgba(0,0,0,.6));
+}
+
+.dumbbell-one {
+    top: 16%;
+    left: 7%;
+    transform: rotate(-24deg);
+    animation: floatOne 10s ease-in-out infinite;
+}
+
+.dumbbell-two {
+    right: 7%;
+    bottom: 14%;
+    transform: rotate(28deg) scale(.75);
+    animation: floatTwo 12s ease-in-out infinite;
+}
+
+.dumbbell-bar {
+    position: absolute;
+    top: 18px;
+    left: 25px;
+    width: 130px;
+    height: 7px;
+    border-radius: 8px;
+    background: linear-gradient(#a6a6a6, #333, #777);
+}
+
+.dumbbell-weight {
+    position: absolute;
+    top: 3px;
+    width: 28px;
+    height: 36px;
+    border: 3px solid #6c6c6c;
+    border-radius: 8px;
+    background: linear-gradient(110deg, #555, #151515 55%, #777);
+}
+
+.weight-left {
+    left: 8px;
+}
+
+.weight-right {
+    right: 8px;
+}
+
+.dumbbell-weight span {
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    left: 7px;
+    width: 5px;
+    border-radius: 4px;
+    background: rgba(255,255,255,.13);
+}
+
+.weight-plate {
+    display: grid;
+    place-items: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    opacity: .10;
+    background: linear-gradient(135deg, #777, #181818 45%, #555);
+    box-shadow: inset 0 0 0 8px #282828, 0 20px 45px rgba(0,0,0,.7);
+}
+
+.plate-one {
+    top: 58%;
+    left: 3%;
+    animation: floatTwo 13s ease-in-out infinite;
+}
+
+.plate-two {
+    top: 7%;
+    right: 5%;
+    width: 100px;
+    height: 100px;
+    opacity: .07;
+    animation: floatOne 14s ease-in-out infinite;
+}
+
+.plate-rim {
+    display: grid;
+    place-items: center;
+    width: 65%;
+    height: 65%;
+    border: 5px solid #383838;
+    border-radius: 50%;
+}
+
+.plate-inner {
+    display: grid;
+    place-items: center;
+    width: 72%;
+    height: 72%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #555, #151515);
+}
+
+.plate-hole {
+    width: 19px;
+    height: 19px;
+    border: 4px solid #080808;
+    border-radius: 50%;
+    background: #111;
+}
+
+.metal-sphere {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 25%, #eee, #777 22%, #202020 70%);
+    opacity: .18;
+}
+
+.sphere-one {
+    top: 22%;
+    left: 42%;
+}
+
+.sphere-two {
+    right: 15%;
+    top: 63%;
+    width: 34px;
+    height: 34px;
+}
+
+.sphere-three {
+    left: 17%;
+    bottom: 17%;
+    width: 13px;
+    height: 13px;
+}
+
+.energy-ring {
+    width: 210px;
+    height: 210px;
+    border: 1px solid rgba(198,243,107,.17);
+    border-radius: 50%;
+    opacity: .4;
+}
+
+.ring-one {
+    top: 5%;
+    left: 36%;
+    transform: rotateX(64deg) rotateZ(-18deg);
+}
+
+.ring-two {
+    right: 12%;
+    bottom: 5%;
+    width: 270px;
+    height: 270px;
+    transform: rotateX(65deg) rotateZ(28deg);
+}
+
+.energy-ring span {
+    position: absolute;
+    top: 12%;
+    left: 12%;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 14px var(--accent);
+}
+
+.ambient-particle {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #d7e9f2;
+    opacity: .35;
+    box-shadow: 0 0 9px rgba(180,220,255,.5);
+    animation: particlePulse 5s ease-in-out infinite;
+}
+
+.particle-one { top: 17%; left: 23%; }
+.particle-two { top: 38%; left: 8%; animation-delay: -1s; }
+.particle-three { top: 72%; left: 36%; animation-delay: -2s; }
+.particle-four { top: 25%; right: 18%; animation-delay: -3s; }
+.particle-five { bottom: 20%; right: 24%; animation-delay: -1.5s; }
+.particle-six { top: 52%; right: 8%; animation-delay: -2.5s; }
+.particle-seven { bottom: 9%; left: 48%; animation-delay: -4s; }
+.particle-eight { top: 10%; left: 58%; animation-delay: -3.5s; }
+
+@keyframes floatOne {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -14px; }
+}
+
+@keyframes floatTwo {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 12px; }
+}
+
+@keyframes particlePulse {
+    0%, 100% { opacity: .15; transform: scale(.8); }
+    50% { opacity: .55; transform: scale(1.3); }
+}
+
+/* =========================================================
+   PAGE LAYOUT — SPLIT SCREEN
+   ========================================================= */
+
+.login-page {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
+    gap: clamp(28px, 5vw, 76px);
+    width: 100%;
+    min-height: 100vh;
+    padding: 22px;
+}
+
+/* Left side uses the starry-sky image if present.
+   The background remains attractive if the image is missing. */
+
+.login-page::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    width: 50%;
+    content: "";
+    background:
+        linear-gradient(to top, rgba(0,0,0,.62), rgba(0,0,0,.04) 70%),
+        url('/gym-management/assets/login-background.png') center / cover no-repeat;
+    border-radius: 28px;
+    opacity: .9;
+}
+
+/* Brand */
+.brand-logo {
+    position: absolute;
+    top: 42px;
+    left: 48px;
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    z-index: 3;
+}
+
+.brand-symbol {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255,255,255,.26);
+    border-radius: 13px;
+    background: rgba(0,0,0,.3);
+    color: var(--accent);
+    backdrop-filter: blur(12px);
+}
+
+.brand-symbol svg {
+    display: block;
+    width: 25px;
+    height: 25px;
+}
+
+.brand-name {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -.7px;
+}
+
+.brand-name span {
+    color: var(--accent);
+}
+
+.brand-tagline {
+    position: absolute;
+    bottom: 30px;
+    left: 48px;
+    color: rgba(255,255,255,.65);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* =========================================================
+   LOGIN CARD / FORM PANEL
+   ========================================================= */
+
+.login-card {
+    grid-column: 2;
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+    max-width: 440px;
+    padding: 30px 8px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    animation: cardEnter .55s ease both;
+}
+
+@keyframes cardEnter {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-heading {
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.heading-emblem {
+    display: none;
+}
+
+.heading-emblem svg {
+    width: 28px;
+    height: 28px;
+}
+
+.heading-eyebrow {
+    margin-bottom: 12px;
+    color: var(--accent);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.2px;
+}
+
+.login-heading h1 {
+    color: #fff;
+    font-size: clamp(32px, 3.1vw, 42px);
+    font-weight: 600;
+    line-height: 1.18;
+    letter-spacing: -1.7px;
+}
+
+.heading-description {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* =========================================================
+   PHP STATUS MESSAGES
+   ========================================================= */
+
+.form-message {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-size: 12px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.success-message {
+    border-color: rgba(117,184,102,.3);
+    background: rgba(55,100,47,.15);
+    color: var(--success);
+}
+
+.error-message {
+    border-color: rgba(255,100,100,.28);
+    background: rgba(100,30,30,.17);
+    color: var(--danger);
+}
+
+.message-symbol {
+    display: inline-grid;
+    place-items: center;
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.07);
+    font-weight: 800;
+}
+
+/* =========================================================
+   LOGIN FORM AND INPUTS
+   ========================================================= */
+
+.login-form {
+    width: 100%;
+}
+
+.input-group {
+    margin-bottom: 21px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 9px;
+    color: #d9d9d9;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.input-control {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 51px;
+    border: 1px solid #252525;
+    border-radius: 15px;
+    background: var(--input-bg);
+    transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.input-control:focus-within {
+    border-color: #777;
+    background: #101010;
+    box-shadow: 0 0 0 3px rgba(255,255,255,.035);
+}
+
+.input-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    min-width: 45px;
+    color: #858585;
+}
+
+.input-icon svg {
+    display: block;
+    width: 19px;
+    height: 19px;
+}
+
+.input-control input {
+    display: block;
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    min-height: 49px;
+    padding: 0 15px 0 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.input-control input::placeholder {
+    color: #737373;
+    opacity: 1;
+}
+
+.input-control input:focus-visible {
+    outline: none;
+    box-shadow: none;
+}
+
+.password-control input {
+    padding-right: 6px;
+}
+
+.password-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: 49px;
+    flex: 0 0 auto;
+    padding: 0 14px 0 8px;
+    border: 0;
+    border-radius: 0 14px 14px 0;
+    background: transparent;
+    color: #9d9d9d;
+    font-size: 11px;
+    font-weight: 600;
+    transition: color .2s ease;
+}
+
+.password-toggle:hover {
+    color: #fff;
+}
+
+.password-toggle svg {
+    display: block;
+    width: 19px;
+    height: 19px;
+}
+
+.toggle-label {
+    display: inline-block;
+}
+
+/* =========================================================
+   PRIMARY SIGN-IN BUTTON
+   ========================================================= */
+
+.login-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 51px;
+    margin-top: 29px;
+    padding: 14px 20px;
+    border: 1px solid #f1f1f1;
+    border-radius: 999px;
+    background: #f1f1f1;
+    color: #111;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+
+.login-submit svg {
+    width: 17px;
+    height: 17px;
+    transition: transform .2s ease;
+}
+
+.login-submit:hover {
+    background: #fff;
+    box-shadow: 0 7px 22px rgba(255,255,255,.07);
+    transform: translateY(-1px);
+}
+
+.login-submit:hover svg {
+    transform: translateX(3px);
+}
+
+.login-submit:active {
+    transform: translateY(0);
+}
+
+/* Footer inside card */
+.login-footer {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.footer-rule {
+    display: none;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    color: #929292;
+    font-size: 12px;
+    transition: color .2s ease;
+}
+
+.back-link:hover {
+    color: var(--accent);
+}
+
+.back-link span {
+    font-size: 16px;
+}
+
+.page-caption {
+    position: absolute;
+    right: 22px;
+    bottom: 17px;
+    color: #4f4f4f;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+}
+
+/* =========================================================
+   RESPONSIVE — TABLETS
+   ========================================================= */
+
+@media (max-width: 900px) {
+    .login-page {
+        grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+        gap: 26px;
+        padding: 16px;
+    }
+
+    .login-page::before {
+        width: 42%;
+        border-radius: 22px;
+    }
+
+    .brand-logo {
+        top: 30px;
+        left: 28px;
+    }
+
+    .brand-tagline {
+        left: 28px;
+        bottom: 24px;
+        max-width: 35%;
+        font-size: 8px;
+        line-height: 1.7;
+    }
+
+    .login-card {
+        grid-column: 2;
+        max-width: 420px;
+        padding: 25px 10px;
+    }
+
+    .login-heading h1 {
+        font-size: 34px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+    body {
+        min-height: 100vh;
+    }
+
+    .gym-background {
+        position: fixed;
+        background:
+            radial-gradient(ellipse at 50% 0%, rgba(20,73,94,.22), transparent 48%),
+            #050505;
+    }
+
+    /* The scenic image becomes a short banner above the form. */
+    .login-page {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        min-height: 100vh;
+        padding: 12px;
+    }
+
+    .login-page::before {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 245px;
+        border-radius: 20px;
+        background-position: center 56%;
+    }
+
+    .brand-logo {
+        top: 26px;
+        left: 24px;
+        gap: 9px;
+    }
+
+    .brand-symbol {
+        width: 35px;
+        height: 35px;
+        border-radius: 10px;
+    }
+
+    .brand-symbol svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .brand-name {
+        font-size: 15px;
+    }
+
+    .brand-tagline {
+        top: 188px;
+        bottom: auto;
+        left: 24px;
+        max-width: calc(100% - 48px);
+        font-size: 8px;
+        letter-spacing: 1.6px;
+    }
+
+    .login-card {
+        align-self: center;
+        width: 100%;
+        max-width: 440px;
+        margin-top: 235px;
+        padding: 27px 8px 25px;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .login-heading {
+        margin-bottom: 25px;
+        text-align: left;
+    }
+
+    .heading-emblem {
+        display: none;
+    }
+
+    .heading-eyebrow {
+        margin-bottom: 10px;
+        font-size: 8px;
+        letter-spacing: 1.8px;
+    }
+
+    .login-heading h1 {
+        font-size: 31px;
+        letter-spacing: -1.1px;
+    }
+
+    .heading-description {
+        margin-top: 9px;
+        font-size: 12px;
+    }
+
+    .input-group {
+        margin-bottom: 18px;
+    }
+
+    .input-control,
+    .input-control input {
+        min-height: 49px;
+    }
+
+    .login-submit {
+        margin-top: 24px;
+    }
+
+    .login-footer {
+        margin-top: 23px;
+    }
+
+    .page-caption {
+        position: static;
+        margin: 0 0 12px;
+        text-align: center;
+        font-size: 8px;
+    }
+
+    /* Decorative objects are less prominent on small screens. */
+    .dumbbell,
+    .weight-plate,
+    .energy-ring {
+        opacity: .045;
+    }
+
+    .sphere-two,
+    .sphere-three {
+        opacity: .08;
+    }
+}
+
+/* Extra-small phones */
+@media (max-width: 380px) {
+    .login-page {
+        padding: 8px;
+    }
+
+    .login-page::before {
+        height: 220px;
+        border-radius: 17px;
+    }
+
+    .brand-logo {
+        top: 20px;
+        left: 18px;
+    }
+
+    .brand-tagline {
+        top: 169px;
+        left: 18px;
+    }
+
+    .login-card {
+        margin-top: 210px;
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+
+    .login-heading h1 {
+        font-size: 28px;
+    }
+
+    .input-icon {
+        width: 39px;
+        min-width: 39px;
+    }
+
+    .input-control input {
+        font-size: 12px;
+    }
+
+    .password-toggle {
+        padding-right: 10px;
+        font-size: 10px;
+    }
+}
+
+/* Motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+/* =========================================================
+   FINAL COLOR + BACKGROUND IMAGE FIX
+   Image file expected at: /gym-management/assets/login-background.png
+   ========================================================= */
+
+/* Keep the ambient decoration colorful across the whole viewport. */
+.gym-background {
+    background:
+        radial-gradient(ellipse at 77% 20%, rgba(80, 139, 145, 0.42) 0%, transparent 38%),
+        radial-gradient(ellipse at 88% 75%, rgba(145, 151, 92, 0.30) 0%, transparent 40%),
+        radial-gradient(ellipse at 67% 84%, rgba(197, 126, 82, 0.34) 0%, transparent 39%),
+        radial-gradient(ellipse at 18% 20%, rgba(44, 151, 179, 0.44), transparent 45%),
+        radial-gradient(ellipse at 25% 58%, rgba(50, 113, 132, 0.30), transparent 45%),
+        #101b20;
+}
+
+.background-glow {
+    filter: blur(82px);
+    opacity: 0.30;
+}
+
+.glow-left {
+    background: #1686a2;
+    opacity: 0.42;
+}
+
+.glow-right {
+    background: #7c9c67;
+    opacity: 0.25;
+}
+
+.glow-bottom {
+    background: #c77c55;
+    opacity: 0.34;
+}
+
+.background-grid {
+    opacity: 0.13;
+    background-image:
+        linear-gradient(rgba(211, 237, 242, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(211, 237, 242, 0.07) 1px, transparent 1px);
+}
+
+/* Left panel: use the downloaded starry-sky photo, brightened gently. */
+.login-page::before {
+    position: absolute;
+    inset: 0 auto 0 0;
+    z-index: -1;
+    width: calc(50% - 11px);
+    content: "";
+    border-radius: 28px;
+    background-color: #08212c;
+    background-image:
+        linear-gradient(
+            to top,
+            rgba(7, 15, 21, 0.40) 0%,
+            rgba(7, 18, 26, 0.08) 48%,
+            rgba(7, 18, 26, 0.02) 100%
+        ),
+        url('/gym-management/assets/login-background.png');
+    background-position: center, center;
+    background-size: cover, cover;
+    background-repeat: no-repeat;
+    filter: brightness(1.08) saturate(1.12);
+    opacity: 1;
+    pointer-events: none;
+}
+
+/* Right panel: soft blue-green light above and warm amber light below.
+   These glows sit behind the form, never over the text or inputs. */
+.login-page::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    width: calc(50% - 11px);
+    content: "";
+    border-radius: 28px;
+    background:
+        radial-gradient(ellipse at 52% 20%, rgba(90, 147, 151, 0.34) 0%, transparent 52%),
+        radial-gradient(ellipse at 82% 65%, rgba(112, 143, 86, 0.25) 0%, transparent 48%),
+        radial-gradient(ellipse at 45% 92%, rgba(194, 119, 76, 0.32) 0%, transparent 53%),
+        linear-gradient(135deg, rgba(20, 40, 42, 0.32), rgba(16, 17, 13, 0.12));
+    pointer-events: none;
+}
+
+/* Keep the form itself clean and readable while the area behind it brightens. */
+.login-card {
+    position: relative;
+    z-index: 2;
+    background: transparent;
+    box-shadow: none;
+}
+
+.brand-logo,
+.brand-tagline,
+.page-caption {
+    z-index: 3;
+}
+
+.dumbbell {
+    opacity: 0.26;
+}
+
+.dumbbell-bar {
+    background: linear-gradient(to bottom, #c8d7dc, #617984 48%, #aabfc6);
+}
+
+.dumbbell-weight {
+    border-color: #718d98;
+    background: linear-gradient(110deg, #6e8994, #344a54 55%, #91a9b1);
+}
+
+.dumbbell-weight span {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.weight-plate {
+    opacity: 0.17;
+    background: linear-gradient(135deg, #71868d, #263941 45%, #7d9299);
+    box-shadow: inset 0 0 0 8px #3b515a, 0 16px 36px rgba(0, 0, 0, 0.38);
+}
+
+.plate-rim {
+    border-color: #617780;
+}
+
+.plate-inner {
+    background: linear-gradient(135deg, #667d86, #273941);
+}
+
+.metal-sphere {
+    opacity: 0.42;
+    background: radial-gradient(circle at 30% 25%, #d9e7e9, #718a92 28%, #27373d 75%);
+    box-shadow: 0 0 24px rgba(129, 207, 218, 0.14);
+}
+
+.energy-ring {
+    border-color: rgba(198, 243, 107, 0.24);
+    opacity: 0.52;
+}
+
+.ambient-particle {
+    background: #c5f0f4;
+    opacity: 0.68;
+    box-shadow: 0 0 10px rgba(154, 227, 239, 0.65);
+}
+
+@media (max-width: 900px) {
+    .login-page::before {
+        width: calc(42% - 8px);
+    }
+
+    .login-page::after {
+        width: calc(58% - 8px);
+    }
+}
+
+@media (max-width: 650px) {
+    .login-page::before {
+        inset: 0 0 auto 0;
+        width: 100%;
+        height: 245px;
+        border-radius: 20px;
+        background-position: center, center 56%;
+    }
+
+    .login-page::after {
+        inset: 0 0 auto 0;
+        width: 100%;
+        height: 245px;
+        border-radius: 20px;
+        background:
+            radial-gradient(ellipse at 50% 18%, rgba(70, 140, 153, 0.24), transparent 60%),
+            linear-gradient(to top, rgba(9, 18, 23, 0.16), transparent 80%);
+    }
+
+    .gym-background {
+        background:
+            radial-gradient(ellipse at 50% 0%, rgba(44, 151, 179, 0.25), transparent 48%),
+            #101b20;
+    }
+}
+
+
+/* =========================================================
+   FINAL LAYOUT FIX — SEAMLESS PHOTO + LOGIN PANEL
+   Keeps the existing photo and login markup, removes the gap,
+   divider, and inner rounded corners between both halves.
+   ========================================================= */
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    background: #070a0c;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.login-page {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
+    gap: 0 !important;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0 !important;
+    isolation: isolate;
+    background: #080b0d;
+}
+
+/* Left photo fills exactly half the screen. Only the outer left
+   corners remain rounded; the inner edge is flush with the form. */
+.login-page::before {
+    position: absolute;
+    inset: 0 auto 0 0;
+    z-index: -1;
+    display: block;
+    width: 50%;
+    height: 100%;
+    margin: 0;
+    border: 0;
+    border-radius: 24px 0 0 24px;
+    background-color: #071725;
+    background-image:
+        linear-gradient(
+            to top,
+            rgba(4, 10, 17, 0.36) 0%,
+            rgba(4, 10, 17, 0.08) 43%,
+            rgba(4, 10, 17, 0.02) 100%
+        ),
+        url('/gym-management/assets/login-background.png');
+    background-position: center, center;
+    background-size: cover, cover;
+    background-repeat: no-repeat;
+    filter: none;
+    opacity: 1;
+    pointer-events: none;
+}
+
+/* Right half uses a continuous dark base with soft light. A subtle
+   gradient at the left edge blends into the photo rather than creating
+   a visible divider or gutter. */
+.login-page::after {
+    position: absolute;
+    inset: 0 0 0 auto;
+    z-index: -1;
+    display: block;
+    width: 50%;
+    height: 100%;
+    margin: 0;
+    border: 0;
+    border-radius: 0 24px 24px 0;
+    background-color: #080b0d;
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(8, 14, 17, 0.28) 0%,
+            rgba(8, 11, 13, 0.02) 20%,
+            rgba(8, 11, 13, 0) 100%
+        ),
+        radial-gradient(
+            ellipse at 52% 16%,
+            rgba(67, 112, 119, 0.28) 0%,
+            transparent 55%
+        ),
+        radial-gradient(
+            ellipse at 85% 64%,
+            rgba(100, 123, 72, 0.19) 0%,
+            transparent 49%
+        ),
+        radial-gradient(
+            ellipse at 35% 96%,
+            rgba(159, 94, 61, 0.25) 0%,
+            transparent 54%
+        ),
+        linear-gradient(135deg, #10191b 0%, #090c0d 62%, #0b0e0b 100%);
+    pointer-events: none;
+}
+
+/* Keep all form controls above the background layers. */
+.login-card {
+    grid-column: 2;
+    position: relative;
+    z-index: 2;
+    align-self: center;
+    justify-self: center;
+    width: min(100%, 440px);
+    max-width: 440px;
+    margin: 0;
+    padding: 30px 8px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* Brand and captions remain anchored to the image edge. */
+.brand-logo {
+    top: 42px;
+    left: 48px;
+    z-index: 3;
+}
+
+.brand-tagline {
+    left: 48px;
+    bottom: 30px;
+    z-index: 3;
+}
+
+.page-caption {
+    z-index: 3;
+}
+
+/* Remove decorative overlays that can muddy the photo/form boundary. */
+.gym-background {
+    z-index: -2;
+    background: #080b0d;
+}
+
+.background-grid {
+    opacity: 0.035;
+}
+
+@media (max-width: 900px) {
+    .login-page {
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        gap: 0 !important;
+        padding: 0 !important;
+    }
+
+    .login-page::before {
+        inset: 0 auto 0 0;
+        width: 45%;
+        height: 100%;
+        border-radius: 20px 0 0 20px;
+    }
+
+    .login-page::after {
+        inset: 0 0 0 auto;
+        width: 55%;
+        height: 100%;
+        border-radius: 0 20px 20px 0;
+    }
+
+    .login-card {
+        grid-column: 2;
+        width: min(100%, 420px);
+        padding: 25px 22px;
+    }
+}
+
+@media (max-width: 650px) {
+    .login-page {
+        display: flex;
+        flex-direction: column;
+        gap: 0 !important;
+        min-height: 100vh;
+        padding: 0 !important;
+    }
+
+    .login-page::before {
+        inset: 0 0 auto 0;
+        width: 100%;
+        height: 245px;
+        border-radius: 0;
+        background-position: center, center 56%;
+    }
+
+    .login-page::after {
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        background-image:
+            linear-gradient(to bottom, rgba(8, 12, 15, 0.02) 0, #080b0d 245px, #080b0d 100%),
+            radial-gradient(ellipse at 75% 38%, rgba(67, 112, 119, 0.15), transparent 52%),
+            radial-gradient(ellipse at 30% 78%, rgba(159, 94, 61, 0.12), transparent 48%);
+    }
+
+    .brand-logo {
+        top: 26px;
+        left: 24px;
+    }
+
+    .brand-tagline {
+        top: 188px;
+        bottom: auto;
+        left: 24px;
+    }
+
+    .login-card {
+        grid-column: auto;
+        align-self: center;
+        width: 100%;
+        max-width: 440px;
+        margin-top: 235px;
+        padding: 27px 20px 25px;
+    }
+
+    .page-caption {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        margin: 0 20px 14px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 380px) {
+    .login-page::before {
+        height: 220px;
+    }
+
+    .login-page::after {
+        background-image:
+            linear-gradient(to bottom, rgba(8, 12, 15, 0.02) 0, #080b0d 220px, #080b0d 100%),
+            radial-gradient(ellipse at 75% 38%, rgba(67, 112, 119, 0.15), transparent 52%);
+    }
+
+    .brand-logo {
+        top: 20px;
+        left: 18px;
+    }
+
+    .brand-tagline {
+        top: 169px;
+        left: 18px;
+    }
+
+    .login-card {
+        margin-top: 210px;
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+}

@@ -1,0 +1,441 @@
+
+/* GYMFIT Trainer Attendance Page */
+
+.trainer-attendance-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px;
+    font-family: Arial, sans-serif;
+    color: #1e293b;
+}
+
+.trainer-attendance-page *,
+.trainer-attendance-page *::before,
+.trainer-attendance-page *::after {
+    box-sizing: border-box;
+}
+
+.attendance-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.attendance-eyebrow {
+    display: inline-block;
+    padding: 7px 12px;
+    border-radius: 20px;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.attendance-page-header h1 {
+    margin: 0 0 10px;
+    font-size: 30px;
+    color: #0f172a;
+}
+
+.attendance-page-header p,
+.attendance-panel-heading p {
+    margin: 0;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.attendance-back-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 42px;
+    padding: 0 16px;
+    border: 1px solid #dbe3ef;
+    border-radius: 8px;
+    color: #334155;
+    background: #fff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.attendance-back-link:hover {
+    background: #f8fafc;
+    border-color: #2563eb;
+}
+
+/* Feedback messages */
+
+.attendance-message {
+    margin-bottom: 20px;
+    padding: 14px 18px;
+    border-radius: 9px;
+    font-size: 14px;
+}
+
+.attendance-message.success {
+    color: #166534;
+    background: #dcfce7;
+    border: 1px solid #bbf7d0;
+}
+
+.attendance-message.error {
+    color: #991b1b;
+    background: #fee2e2;
+    border: 1px solid #fecaca;
+}
+
+/* Statistics cards */
+
+.attendance-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-bottom: 28px;
+}
+
+.attendance-stat-card {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    padding: 22px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, .04);
+}
+
+.attendance-stat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 54px;
+    height: 54px;
+    border-radius: 12px;
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.attendance-stat-icon.blue {
+    color: #2563eb;
+    background: #dbeafe;
+}
+
+.attendance-stat-icon.green {
+    color: #15803d;
+    background: #dcfce7;
+}
+
+.attendance-stat-icon.orange {
+    color: #c2410c;
+    background: #ffedd5;
+}
+
+.attendance-stat-card p {
+    margin: 0 0 7px;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.attendance-stat-card h2 {
+    margin: 0 0 6px;
+    color: #0f172a;
+    font-size: 28px;
+}
+
+.attendance-stat-card span {
+    color: #94a3b8;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* Panels */
+
+.attendance-panel {
+    margin-bottom: 28px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, .04);
+}
+
+.attendance-panel-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding: 23px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.attendance-panel-heading h2 {
+    margin: 0 0 8px;
+    color: #0f172a;
+    font-size: 20px;
+}
+
+/* Search */
+
+.attendance-search-area {
+    padding: 18px 22px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.attendance-search-area input {
+    width: 100%;
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    outline: none;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.attendance-search-area input:focus,
+.attendance-date-filter input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, .1);
+}
+
+/* Tables */
+
+.attendance-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.attendance-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.attendance-table thead {
+    background: #f8fafc;
+}
+
+.attendance-table th {
+    padding: 15px 20px;
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .4px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.attendance-table td {
+    padding: 16px 20px;
+    border-top: 1px solid #f1f5f9;
+    color: #334155;
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+.attendance-table tbody tr:hover {
+    background: #f8fafc;
+}
+
+.attendance-member-name {
+    color: #0f172a !important;
+    font-weight: 600;
+}
+
+/* Status badges */
+
+.attendance-badge {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.attendance-badge.checked-in {
+    color: #166534;
+    background: #dcfce7;
+}
+
+.attendance-badge.checked-out {
+    color: #475569;
+    background: #e2e8f0;
+}
+
+.attendance-time {
+    display: block;
+    margin-top: 6px;
+    color: #64748b;
+    font-size: 11px;
+}
+
+.attendance-pending {
+    color: #c2410c;
+    font-size: 12px;
+}
+
+/* Action buttons */
+
+.attendance-action-form {
+    margin: 0;
+}
+
+.attendance-action-button {
+    min-height: 36px;
+    padding: 0 14px;
+    border: none;
+    border-radius: 7px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.check-in-button {
+    background: #16a34a;
+}
+
+.check-in-button:hover {
+    background: #15803d;
+}
+
+.check-out-button {
+    background: #ea580c;
+}
+
+.check-out-button:hover {
+    background: #c2410c;
+}
+
+/* Date filter */
+
+.attendance-date-filter {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.attendance-date-filter label {
+    color: #475569;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.attendance-date-filter input {
+    min-height: 39px;
+    padding: 0 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    outline: none;
+    font-family: inherit;
+    font-size: 12px;
+}
+
+.attendance-date-filter button {
+    min-height: 39px;
+    padding: 0 16px;
+    border: none;
+    border-radius: 7px;
+    background: #2563eb;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.attendance-date-filter button:hover {
+    background: #1d4ed8;
+}
+
+/* Empty state */
+
+.attendance-empty-state {
+    padding: 55px 20px;
+    text-align: center;
+}
+
+.attendance-empty-state.compact {
+    padding: 35px 20px;
+}
+
+.attendance-empty-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 27px;
+}
+
+.attendance-empty-state h3 {
+    margin: 0 0 10px;
+    color: #0f172a;
+    font-size: 18px;
+}
+
+.attendance-empty-state p {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* Responsive */
+
+@media (max-width: 1000px) {
+    .attendance-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 650px) {
+    .trainer-attendance-page {
+        padding: 18px 12px;
+    }
+
+    .attendance-page-header h1 {
+        font-size: 25px;
+    }
+
+    .attendance-stats {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .attendance-stat-card {
+        padding: 17px;
+    }
+
+    .attendance-panel-heading {
+        align-items: flex-start;
+        padding: 18px;
+    }
+
+    .attendance-date-filter {
+        width: 100%;
+    }
+
+    .attendance-date-filter input {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .attendance-table th,
+    .attendance-table td {
+        padding: 13px 14px;
+    }
+}

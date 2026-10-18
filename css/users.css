@@ -1,0 +1,969 @@
+/* =========================================================
+
+   USER MANAGEMENT
+
+\========================================================= */
+
+.users-page {
+
+    min-height: calc(100vh - 80px);
+
+    padding: 35px 30px 50px;
+
+    background: #F5F4EE;
+
+    box-sizing: border-box;
+
+    font-family: Arial, sans-serif;
+
+}
+
+/* =========================================================
+
+   PAGE HEADER
+
+\========================================================= */
+
+.users-page-header {
+
+    max-width: 1200px;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+}
+
+.users-page-label {
+
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #C6F36B;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: .8px;
+
+}
+
+.users-page-header h1 {
+
+    margin: 0;
+
+    color: #171916;
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+}
+
+.users-page-header p {
+
+    margin: 8px 0 0;
+
+    color: #696D64;
+
+    font-size: 14px;
+
+}
+
+/* =========================================================
+
+   ADD USER BUTTON
+
+\========================================================= */
+
+.users-add-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 42px;
+
+    padding: 0 18px;
+
+    background: #C6F36B;
+
+    color: #171916;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    transition:
+
+        background .2s ease,
+
+        transform .2s ease;
+
+}
+
+.users-add-button:hover {
+
+    background: #B8E85B;
+
+    color: #171916;
+
+    transform: translateY(-1px);
+
+}
+
+/* =========================================================
+
+   SUMMARY
+
+\========================================================= */
+
+.users-summary {
+
+    max-width: 1200px;
+
+    margin: 0 auto 25px;
+
+}
+
+.users-summary-card {
+
+    width: 230px;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    background: #fff;
+
+    border: 1px solid #E5E6DD;
+
+    border-radius: 12px;
+
+    box-shadow:
+
+        0 4px 16px rgba(23, 25, 22, 0.04);
+
+}
+
+.users-summary-card span {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #696D64;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+.users-summary-card strong {
+
+    display: block;
+
+    color: #171916;
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+}
+
+/* =========================================================
+
+   USERS CARD
+
+\========================================================= */
+
+.users-card {
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    background: #fff;
+
+    border: 1px solid #E5E6DD;
+
+    border-radius: 14px;
+
+    box-shadow:
+
+        0 4px 16px rgba(23, 25, 22, 0.04);
+
+    overflow: hidden;
+
+}
+
+.users-card-header {
+
+    padding: 22px 25px;
+
+    border-bottom: 1px solid #E5E6DD;
+
+    background: #F7F7F2;
+
+}
+
+.users-card-header h2 {
+
+    margin: 0;
+
+    color: #171916;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+}
+
+.users-card-header p {
+
+    margin: 5px 0 0;
+
+    color: #696D64;
+
+    font-size: 13px;
+
+}
+
+/* =========================================================
+
+   TABLE
+
+\========================================================= */
+
+.users-table-wrapper {
+
+    width: 100%;
+
+    overflow-x: auto;
+
+}
+
+.users-table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+}
+
+.users-table th {
+
+    padding: 14px 18px;
+
+    background: #171916;
+
+    color: #fff;
+
+    text-align: left;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+}
+
+.users-table td {
+
+    padding: 14px 18px;
+
+    border-bottom: 1px solid #E5E6DD;
+
+    color: #454940;
+
+    font-size: 14px;
+
+    white-space: nowrap;
+
+    vertical-align: middle;
+
+}
+
+.users-table tbody tr:hover {
+
+    background: #F5F4EE;
+
+}
+
+.users-table tbody tr:last-child td {
+
+    border-bottom: none;
+
+}
+
+.users-table td strong {
+
+    color: #171916;
+
+    font-weight: 600;
+
+}
+
+/* =========================================================
+
+   ROLE BADGES
+
+\========================================================= */
+
+.user-role {
+
+    display: inline-block;
+
+    padding: 5px 11px;
+
+    border-radius: 15px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+}
+
+.role-admin {
+
+    background: #EEF5DC;
+
+    color: #171916;
+
+}
+
+.role-trainer {
+
+    background: #EEF5DC;
+
+    color: #171916;
+
+}
+
+.role-member {
+
+    background: #EEF5DC;
+
+    color: #171916;
+
+}
+
+/* =========================================================
+
+   ACTIONS
+
+\========================================================= */
+
+.user-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+}
+
+.user-edit-button,
+
+.user-delete-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 60px;
+
+    height: 34px;
+
+    padding: 0 12px;
+
+    box-sizing: border-box;
+
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition:
+
+        background .2s ease,
+
+        color .2s ease,
+
+        transform .2s ease;
+
+}
+
+/* =========================================================
+
+   EDIT BUTTON
+
+\========================================================= */
+
+.user-edit-button {
+
+    background: #EEF5DC;
+
+    color: #171916;
+
+}
+
+.user-edit-button:hover {
+
+    background: #EEF5DC;
+
+    color: #171916;
+
+    transform: translateY(-1px);
+
+}
+
+/* =========================================================
+
+   DELETE BUTTON
+
+\========================================================= */
+
+.user-delete-button {
+
+    background: #F8E8E2;
+
+    color: #B83A2B;
+
+}
+
+.user-delete-button:hover {
+
+    background: #F2D8D0;
+
+    color: #994733;
+
+    transform: translateY(-1px);
+
+}
+
+/* =========================================================
+
+   EMPTY STATE
+
+\========================================================= */
+
+.users-empty-state {
+
+    padding: 60px 20px;
+
+    text-align: center;
+
+}
+
+.users-empty-icon {
+
+    margin-bottom: 15px;
+
+    font-size: 40px;
+
+}
+
+.users-empty-state h3 {
+
+    margin: 0 0 8px;
+
+    color: #171916;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+}
+
+.users-empty-state p {
+
+    margin: 0 0 20px;
+
+    color: #696D64;
+
+    font-size: 14px;
+
+}
+
+/* =========================================================
+
+   RESPONSIVE
+
+\========================================================= */
+
+@media (max-width: 768px) {
+
+    .users-page {
+
+        padding: 25px 18px 40px;
+
+    }
+
+    .users-page-header {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+    .users-page-header h1 {
+
+        font-size: 25px;
+
+    }
+
+    .users-add-button {
+
+        width: 100%;
+
+    }
+
+    .users-summary-card {
+
+        width: 100%;
+
+    }
+
+    .users-table th,
+
+    .users-table td {
+
+        padding: 12px 14px;
+
+    }
+
+    .user-actions {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+    .user-edit-button,
+
+    .user-delete-button {
+
+        width: 100%;
+
+    }
+
+}
+
+/* =========================================================
+
+   DELETE CONFIRMATION MODAL
+
+\========================================================= */
+
+.delete-modal-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(23, 25, 22, 0.55);
+
+    z-index: 9999;
+
+    box-sizing: border-box;
+
+}
+
+.delete-modal-overlay.active {
+
+    display: flex;
+
+}
+
+body.modal-open {
+
+    overflow: hidden;
+
+}
+
+/* =========================================================
+
+   MODAL
+
+\========================================================= */
+
+.delete-modal {
+
+    width: 100%;
+
+    max-width: 420px;
+
+    padding: 30px;
+
+    box-sizing: border-box;
+
+    background: #ffffff;
+
+    border-radius: 16px;
+
+    box-shadow:
+
+        0 20px 50px rgba(15, 23, 42, 0.20);
+
+    text-align: center;
+
+    animation: deleteModalShow 0.2s ease;
+
+}
+
+@keyframes deleteModalShow {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(-10px) scale(0.97);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0) scale(1);
+
+    }
+
+}
+
+/* =========================================================
+
+   WARNING ICON
+
+\========================================================= */
+
+.delete-modal-icon {
+
+    width: 54px;
+
+    height: 54px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin: 0 auto 18px;
+
+    background: #F8E8E2;
+
+    border: 1px solid #fecaca;
+
+    border-radius: 50%;
+
+    color: #B83A2B;
+
+    font-size: 25px;
+
+    font-weight: 700;
+
+}
+
+/* =========================================================
+
+   TITLE
+
+\========================================================= */
+
+.delete-modal h2 {
+
+    margin: 0 0 10px;
+
+    color: #171916;
+
+    font-size: 21px;
+
+    font-weight: 700;
+
+}
+
+/* =========================================================
+
+   MESSAGE
+
+\========================================================= */
+
+.delete-modal p {
+
+    margin: 0;
+
+    color: #555A50;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+}
+
+.delete-modal p strong {
+
+    color: #171916;
+
+    font-weight: 700;
+
+}
+
+.delete-modal-warning {
+
+    display: block;
+
+    margin-top: 8px;
+
+    color: #B83A2B;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+}
+
+/* =========================================================
+
+   ACTIONS
+
+\========================================================= */
+
+.delete-modal-actions {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 25px;
+
+}
+
+/* =========================================================
+
+   CANCEL
+
+\========================================================= */
+
+.delete-modal-cancel {
+
+    min-width: 105px;
+
+    height: 42px;
+
+    padding: 0 18px;
+
+    border: 1px solid #DADDD2;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #555A50;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+
+        background 0.2s ease,
+
+        border-color 0.2s ease,
+
+        color 0.2s ease;
+
+}
+
+.delete-modal-cancel:hover {
+
+    background: #F5F4EE;
+
+    border-color: #C8CCBF;
+
+    color: #454940;
+
+}
+
+/* =========================================================
+
+   DELETE CONFIRM
+
+\========================================================= */
+
+.delete-modal-confirm {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 115px;
+
+    height: 42px;
+
+    padding: 0 18px;
+
+    box-sizing: border-box;
+
+    border-radius: 8px;
+
+    background: #B83A2B;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition:
+
+        background 0.2s ease,
+
+        transform 0.2s ease;
+
+}
+
+.delete-modal-confirm:hover {
+
+    background: #994733;
+
+    color: #ffffff;
+
+    transform: translateY(-1px);
+
+}
+
+/* =========================================================
+
+   DELETE USER BUTTON
+
+\========================================================= */
+
+.user-final-delete-button {
+
+    background: #B83A2B;
+
+}
+
+.user-final-delete-button:hover {
+
+    background: #994733;
+
+}
+
+/* =========================================================
+
+   RESPONSIVE
+
+\========================================================= */
+
+@media (max-width: 480px) {
+
+    .delete-modal {
+
+        padding: 25px 20px;
+
+    }
+
+    .delete-modal-actions {
+
+        flex-direction: column-reverse;
+
+    }
+
+    .delete-modal-cancel,
+
+    .delete-modal-confirm {
+
+        width: 100%;
+
+    }
+
+}
+
+/* SEARCH AND RECORD COUNT */
+.users-card-header{display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap}
+.users-card-heading{flex:0 1 260px;min-width:190px}
+.users-list-tools{display:flex;align-items:center;justify-content:flex-end;gap:12px;flex:1 1 520px;min-width:0}
+.users-search-form{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex:1 1 auto;min-width:0;margin:0}
+.users-search-form input[type="search"]{width:100%;max-width:340px;min-width:150px;height:42px;padding:0 13px;border:1px solid #DADDD2;border-radius:22px;background:#FFFFFF;color:#171916;font:inherit;font-size:13px;outline:none}
+.users-search-form input[type="search"]:focus{border-color:#A7D94C;box-shadow:0 0 0 3px rgba(198,243,107,.28)}
+.users-search-button{height:42px;padding:0 18px;border:1px solid #B6E45A;border-radius:22px;background:#C6F36B;color:#171916;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.users-search-button:hover{background:#B8E85B}
+.users-clear-button{display:inline-flex;align-items:center;justify-content:center;height:42px;padding:0 14px;border:1px solid #DADDD2;border-radius:22px;background:#FFFFFF;color:#454940;text-decoration:none;font-size:13px;font-weight:600;white-space:nowrap}
+.users-record-count{display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:6px 12px;border:1px solid #DDEBC2;border-radius:20px;background:#EEF5DC;color:#34491B;font-size:12px;font-weight:700;white-space:nowrap}
+.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.user-id{color:#696D64;font-weight:700}
+
+/* PAGINATION */
+.users-pagination-footer{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:17px 22px;border-top:1px solid #E8E9E1;background:#FFFFFF}
+.users-showing{margin:0;color:#696D64;font-size:13px;line-height:1.5}
+.users-showing strong{color:#171916}
+.users-pagination{display:flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap}
+.users-page-link{display:inline-flex;align-items:center;justify-content:center;min-width:36px;height:36px;padding:0 11px;border:1px solid #E5E6DD;border-radius:9px;background:#FFFFFF;color:#454940;text-decoration:none;font-size:13px;font-weight:600}
+a.users-page-link:hover{background:#EEF5DC;border-color:#DDEBC2;color:#34491B}
+.users-page-link.active{border-color:#171916;background:#C6F36B;color:#171916}
+.users-page-link.disabled{color:#A2A69B;background:#F7F7F2;cursor:not-allowed}
+.users-page-ellipsis{padding:0 3px;color:#696D64}
+.users-success-message{padding:13px 16px;margin:0 auto 18px;max-width:1200px;border:1px solid #D6E8B0;border-radius:10px;background:#EEF5DC;color:#34491B;font-weight:600}
+.users-error-message{padding:13px 16px;margin:0 auto 18px;max-width:1200px;border:1px solid #F0C9BE;border-radius:10px;background:#F8E8E2;color:#994733;font-weight:600}
+
+@media(max-width:900px){
+    .users-card-header{align-items:flex-start;flex-direction:column}
+    .users-card-heading{flex:1 1 auto;width:100%}
+    .users-list-tools{width:100%;flex:1 1 auto;justify-content:space-between}
+    .users-search-form{justify-content:flex-start}
+    .users-search-form input[type="search"]{max-width:none}
+}
+@media(max-width:600px){
+    .users-list-tools{align-items:stretch;flex-direction:column}
+    .users-search-form{display:grid;grid-template-columns:minmax(0,1fr) auto;justify-content:stretch}
+    .users-search-form input[type="search"]{grid-column:1/-1;max-width:none;min-width:0;width:100%}
+    .users-search-button,.users-clear-button{width:100%}
+    .users-record-count{align-self:flex-start}
+    .users-pagination-footer{align-items:flex-start;flex-direction:column;padding:16px}
+    .users-pagination{justify-content:flex-start}
+}

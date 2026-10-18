@@ -1,0 +1,488 @@
+/* =========================================================
+   USER DELETE PAGE
+========================================================= */
+
+.user-delete-page {
+    min-height: calc(100vh - 80px);
+
+    padding: 35px 40px 50px;
+
+    background: #f5f7fb;
+
+    box-sizing: border-box;
+
+    font-family: Arial, sans-serif;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.user-delete-header {
+    width: 100%;
+
+    max-width: 760px;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+.user-delete-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #2563eb;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+}
+
+
+.user-delete-header h1 {
+    margin: 0;
+
+    color: #0f172a;
+
+    font-size: 30px;
+
+    font-weight: 700;
+}
+
+
+.user-delete-header p {
+    margin: 8px 0 0;
+
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.user-delete-back-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 42px;
+
+    padding: 0 17px;
+
+    background: #ffffff;
+
+    border: 1px solid #dbe2ea;
+
+    border-radius: 8px;
+
+    color: #334155;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.user-delete-back-button:hover {
+    background: #f8fafc;
+
+    border-color: #cbd5e1;
+
+    color: #334155;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.user-delete-error {
+    width: 100%;
+
+    max-width: 600px;
+
+    margin: 0 auto 20px;
+
+    padding: 13px 16px;
+
+    box-sizing: border-box;
+
+    background: #fef2f2;
+
+    border: 1px solid #fecaca;
+
+    border-radius: 8px;
+
+    color: #b91c1c;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   DELETE CARD
+========================================================= */
+
+.user-delete-card {
+    width: 100%;
+
+    max-width: 600px;
+
+    margin: 0 auto;
+
+    padding: 30px;
+
+    box-sizing: border-box;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 4px 16px rgba(
+            15,
+            23,
+            42,
+            0.06
+        );
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   DELETE ICON
+========================================================= */
+
+.user-delete-icon {
+    width: 58px;
+
+    height: 58px;
+
+    margin: 0 auto 16px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #fee2e2;
+
+    border-radius: 50%;
+
+    color: #dc2626;
+
+    font-size: 26px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   DELETE TITLE
+========================================================= */
+
+.user-delete-card h2 {
+    margin: 0 0 10px;
+
+    color: #0f172a;
+
+    font-size: 22px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   DELETE MESSAGE
+========================================================= */
+
+.user-delete-message {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   WARNING
+========================================================= */
+
+.user-delete-warning {
+    margin: 20px 0;
+
+    padding: 14px 16px;
+
+    background: #fff7ed;
+
+    border: 1px solid #fed7aa;
+
+    border-radius: 9px;
+
+    color: #9a3412;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    text-align: left;
+}
+
+
+.user-delete-warning strong {
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   USER INFORMATION
+========================================================= */
+
+.user-delete-info {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    margin-top: 20px;
+
+    padding: 18px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 10px;
+
+    text-align: left;
+}
+
+
+/* =========================================================
+   USER DETAIL
+========================================================= */
+
+.user-delete-detail {
+    padding: 8px;
+}
+
+
+.user-delete-detail span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+.user-delete-detail strong {
+    display: block;
+
+    color: #334155;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.user-delete-actions {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+
+/* =========================================================
+   CANCEL
+========================================================= */
+
+.user-cancel-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 100px;
+
+    height: 42px;
+
+    padding: 0 18px;
+
+    box-sizing: border-box;
+
+    background: #ffffff;
+
+    border: 1px solid #dbe2ea;
+
+    border-radius: 8px;
+
+    color: #475569;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.user-cancel-button:hover {
+    background: #f8fafc;
+
+    border-color: #cbd5e1;
+
+    color: #334155;
+}
+
+
+/* =========================================================
+   DELETE CONFIRM BUTTON
+========================================================= */
+
+.user-delete-confirm-button {
+    min-width: 130px;
+
+    height: 42px;
+
+    padding: 0 20px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #dc2626;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.user-delete-confirm-button:hover {
+    background: #b91c1c;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .user-delete-page {
+        padding: 25px 18px 40px;
+    }
+
+
+    .user-delete-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .user-delete-header h1 {
+        font-size: 25px;
+    }
+
+
+    .user-delete-back-button {
+        width: 100%;
+    }
+
+
+    .user-delete-card {
+        padding: 22px;
+    }
+
+
+    .user-delete-info {
+        grid-template-columns: 1fr;
+    }
+
+
+    .user-delete-actions {
+        flex-direction: column-reverse;
+
+        align-items: stretch;
+    }
+
+
+    .user-cancel-button,
+    .user-delete-confirm-button {
+        width: 100%;
+    }
+
+}

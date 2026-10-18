@@ -1,0 +1,476 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+    --background: #000000;
+    --lime: #84cc16;
+    --lime-light: #a3e635;
+    --white: #ffffff;
+    --muted: #a1a1aa;
+    --border: rgba(132, 204, 22, 0.16);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    background: var(--background);
+    color: var(--white);
+    font-family: 'DM Mono', monospace;
+    -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+    color: #000000;
+    background: rgba(132, 204, 22, 0.4);
+}
+
+/* Main page */
+
+.error-page {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    padding: 32px 24px 24px;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            ellipse at 50% 43%,
+            rgba(132, 204, 22, 0.065),
+            transparent 48%
+        ),
+        #000000;
+}
+
+/* Background grid */
+
+.error-page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.25;
+    background-image:
+        linear-gradient(
+            rgba(132, 204, 22, 0.055) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(132, 204, 22, 0.055) 1px,
+            transparent 1px
+        );
+    background-size: 44px 44px;
+    mask-image: linear-gradient(
+        to bottom,
+        transparent,
+        black 20%,
+        black 75%,
+        transparent
+    );
+}
+
+/* Main content */
+
+.error-content {
+    width: 100%;
+    max-width: 670px;
+    margin: auto;
+    text-align: center;
+    animation: contentEnter 0.7s ease-out both;
+}
+
+/* 404 glitch effect */
+
+.glitch-container {
+    position: relative;
+    display: inline-block;
+    margin: 0 auto 40px;
+    isolation: isolate;
+}
+
+.glitch-number {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(110px, 22vw, 180px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.09em;
+    text-indent: -0.09em;
+    user-select: none;
+}
+
+.glitch-outline {
+    position: relative;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(132, 204, 22, 0.2);
+}
+
+.glitch-top,
+.glitch-bottom,
+.glitch-white {
+    position: absolute;
+    inset: 0;
+}
+
+.glitch-top {
+    color: var(--lime);
+    mix-blend-mode: screen;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    animation: glitchTop 0.15s ease-in-out infinite alternate;
+}
+
+.glitch-bottom {
+    color: var(--lime-light);
+    mix-blend-mode: screen;
+    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+    animation: glitchBottom 0.25s ease-in-out infinite alternate;
+}
+
+.glitch-white {
+    color: var(--white);
+    animation: whiteFlicker 3s steps(1, end) infinite;
+}
+
+/* Error panel */
+
+.error-message {
+    width: 100%;
+    padding: 28px 26px;
+    border: 1px solid var(--border);
+    background: rgba(9, 12, 7, 0.72);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    animation: panelEnter 0.7s 0.15s ease-out both;
+}
+
+.error-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.error-heading h2 {
+    color: var(--lime);
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(18px, 3.5vw, 25px);
+    font-weight: 800;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+.error-indicator {
+    flex: 0 0 auto;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--lime);
+    box-shadow: 0 0 15px rgba(132, 204, 22, 0.8);
+    animation: indicatorPulse 1.3s ease-in-out infinite;
+}
+
+/* Message text */
+
+.error-message > p {
+    max-width: 510px;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+/* Status information */
+
+.error-reference {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 25px;
+    padding-top: 17px;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.error-reference > span:first-child {
+    color: #71717a;
+}
+
+.error-reference strong {
+    color: var(--lime);
+    font-weight: 500;
+}
+
+.system-status {
+    padding-left: 12px;
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+    color: #a1a1aa;
+}
+
+/* Hint below message */
+
+.error-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 28px;
+    color: #626b58;
+    font-size: 9px;
+    line-height: 1.8;
+    letter-spacing: 1.5px;
+    text-align: center;
+    animation: panelEnter 0.7s 0.3s ease-out both;
+}
+
+.hint-dot {
+    flex: 0 0 auto;
+    width: 5px;
+    height: 5px;
+    background: var(--lime);
+    box-shadow: 0 0 9px rgba(132, 204, 22, 0.6);
+}
+
+/* Footer */
+
+.error-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    width: 100%;
+    margin-top: 55px;
+    padding-top: 19px;
+    border-top: 1px solid rgba(255, 255, 255, 0.09);
+    color: #52525b;
+    font-size: 9px;
+    letter-spacing: 1.4px;
+}
+
+.footer-brand {
+    color: #d4d4d8;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.footer-brand strong {
+    color: var(--lime);
+}
+
+/* Return to Home button */
+.error-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    animation: panelEnter 0.7s 0.3s ease-out both;
+}
+
+.home-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 52px;
+    padding: 0 27px;
+    overflow: hidden;
+    border: 1px solid #84cc16;
+    background: #84cc16;
+    color: #000;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.home-button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #fff;
+    transform: translateY(101%);
+    transition: transform 0.3s ease;
+}
+
+.home-button:hover::before {
+    transform: translateY(0);
+}
+
+.home-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(132, 204, 22, 0.18);
+}
+
+.home-button span {
+    position: relative;
+    z-index: 1;
+}
+
+.home-arrow {
+    font-size: 18px;
+    transition: transform 0.25s ease;
+}
+
+.home-button:hover .home-arrow {
+    transform: translateX(-4px);
+}
+
+/* Animations */
+
+@keyframes glitchTop {
+    from {
+        transform: translateX(-3px);
+        opacity: 0.8;
+    }
+
+    to {
+        transform: translateX(3px);
+        opacity: 1;
+    }
+}
+
+@keyframes glitchBottom {
+    from {
+        transform: translateX(3px);
+        opacity: 0.8;
+    }
+
+    to {
+        transform: translateX(-3px);
+        opacity: 1;
+    }
+}
+
+@keyframes whiteFlicker {
+    0%, 92%, 94%, 100% {
+        opacity: 1;
+    }
+
+    93% {
+        opacity: 0.35;
+    }
+
+    95% {
+        opacity: 0.75;
+    }
+}
+
+@keyframes indicatorPulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.4;
+        transform: scale(0.8);
+    }
+}
+
+@keyframes contentEnter {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes panelEnter {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tablet and mobile */
+
+@media (max-width: 600px) {
+    .error-page {
+        padding: 24px 18px;
+    }
+
+    .glitch-container {
+        margin-bottom: 28px;
+    }
+
+    .glitch-number {
+        font-size: clamp(105px, 31vw, 150px);
+    }
+
+    .error-message {
+        padding: 23px 16px;
+    }
+
+    .error-heading {
+        gap: 9px;
+    }
+
+    .error-heading h2 {
+        letter-spacing: 0.07em;
+    }
+
+    .error-message > p {
+        font-size: 12px;
+    }
+
+    .error-reference {
+        gap: 9px;
+        font-size: 9px;
+    }
+
+    .error-hint {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .error-footer {
+        flex-direction: column;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 40px;
+        text-align: center;
+        line-height: 1.6;
+    }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}

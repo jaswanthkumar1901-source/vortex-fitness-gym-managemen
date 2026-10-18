@@ -1,0 +1,1044 @@
+/* =========================================================
+   MEMBER - TRAINER FORM
+   Used by:
+   - member_trainer/add.php
+   - member_trainer/edit.php
+========================================================= */
+
+.member-trainer-form-page {
+    min-height: calc(100vh - 80px);
+
+    background: #f5f7fb;
+
+    padding: 35px 40px 50px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.member-trainer-form-header {
+    max-width: 760px;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+.member-trainer-form-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #2563eb;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+}
+
+
+.member-trainer-form-header h1 {
+    margin: 0;
+
+    color: #0f172a;
+
+    font-size: 30px;
+
+    font-weight: 700;
+}
+
+
+.member-trainer-form-header p {
+    margin: 8px 0 0;
+
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.member-trainer-back-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 42px;
+
+    padding: 0 17px;
+
+    border: 1px solid #dbe2ea;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #334155;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    transition: all 0.2s ease;
+}
+
+
+.member-trainer-back-button:hover {
+    background: #f8fafc;
+
+    border-color: #cbd5e1;
+}
+
+
+/* =========================================================
+   FORM CARD
+========================================================= */
+
+.member-trainer-form-card {
+    width: 100%;
+
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 4px 16px rgba(15, 23, 42, 0.06);
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   CARD HEADER
+========================================================= */
+
+.member-trainer-form-card-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 22px 26px;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    background: #fbfdff;
+}
+
+
+.member-trainer-form-icon {
+    width: 44px;
+
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #dbeafe;
+
+    color: #2563eb;
+
+    border-radius: 10px;
+
+    font-size: 21px;
+
+    font-weight: 700;
+}
+
+
+.member-trainer-form-card-header h2 {
+    margin: 0;
+
+    color: #0f172a;
+
+    font-size: 18px;
+}
+
+
+.member-trainer-form-card-header p {
+    margin: 4px 0 0;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.member-trainer-form {
+    padding: 28px;
+}
+
+
+.member-trainer-form-group {
+    margin-bottom: 20px;
+}
+
+
+.member-trainer-form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #334155;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.member-trainer-form-group label span {
+    color: #dc2626;
+}
+
+
+/* Inputs + Select */
+
+.member-trainer-form-group input,
+.member-trainer-form-group select {
+    width: 100%;
+
+    height: 45px;
+
+    padding: 0 14px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #dbe2ea;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #0f172a;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.member-trainer-form-group input:focus,
+.member-trainer-form-group select:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+
+.member-trainer-form-group input::placeholder {
+    color: #94a3b8;
+}
+
+
+/* Help Text */
+
+.member-trainer-help-text {
+    display: block;
+
+    margin-top: 7px;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.member-trainer-form-actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 28px;
+
+    padding-top: 22px;
+
+    border-top: 1px solid #e5e7eb;
+}
+
+
+/* Cancel */
+
+.member-trainer-cancel-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 100px;
+
+    height: 42px;
+
+    padding: 0 18px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #dbe2ea;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #475569;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+.member-trainer-cancel-button:hover {
+    background: #f8fafc;
+}
+
+
+/* Submit */
+
+.member-trainer-submit-button {
+    min-width: 140px;
+
+    height: 42px;
+
+    padding: 0 20px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.member-trainer-submit-button:hover {
+    background: #1d4ed8;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   ERROR POPUP
+========================================================= */
+
+.member-trainer-popup-overlay {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    background: rgba(15, 23, 42, 0.55);
+
+    z-index: 9999;
+}
+
+
+.member-trainer-popup {
+    position: relative;
+
+    width: 100%;
+
+    max-width: 450px;
+
+    padding: 30px;
+
+    box-sizing: border-box;
+
+    background: #ffffff;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 20px 50px rgba(15, 23, 42, 0.25);
+
+    text-align: center;
+
+    animation: memberTrainerPopupShow 0.2s ease;
+}
+
+
+@keyframes memberTrainerPopupShow {
+
+    from {
+        opacity: 0;
+
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: scale(1);
+    }
+
+}
+
+
+.member-trainer-popup-close {
+    position: absolute;
+
+    top: 12px;
+    right: 14px;
+
+    width: 32px;
+
+    height: 32px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #94a3b8;
+
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+
+.member-trainer-popup-close:hover {
+    color: #475569;
+}
+
+
+.member-trainer-popup-icon {
+    width: 58px;
+
+    height: 58px;
+
+    margin: 0 auto 16px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #fee2e2;
+
+    color: #dc2626;
+
+    border-radius: 50%;
+
+    font-size: 26px;
+
+    font-weight: 700;
+}
+
+
+.member-trainer-popup h2 {
+    margin: 0 0 10px;
+
+    color: #0f172a;
+
+    font-size: 22px;
+}
+
+
+.member-trainer-popup p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+.member-trainer-popup-button {
+    min-width: 100px;
+
+    height: 42px;
+
+    margin-top: 22px;
+
+    padding: 0 20px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.member-trainer-popup-button:hover {
+    background: #1d4ed8;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .member-trainer-form-page {
+        padding: 25px 18px 40px;
+    }
+
+
+    .member-trainer-form-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .member-trainer-form-header h1 {
+        font-size: 25px;
+    }
+
+
+    .member-trainer-back-button {
+        width: 100%;
+    }
+
+
+    .member-trainer-form {
+        padding: 20px;
+    }
+
+
+    .member-trainer-form-card-header {
+        padding: 20px;
+    }
+
+
+    .member-trainer-form-actions {
+        flex-direction: column-reverse;
+
+        align-items: stretch;
+    }
+
+
+    .member-trainer-cancel-button,
+    .member-trainer-submit-button {
+        width: 100%;
+    }
+
+
+    .member-trainer-popup {
+        padding: 25px 20px;
+    }
+
+}
+
+/* =========================================================
+   DELETE ASSIGNMENT CARD
+========================================================= */
+
+.member-trainer-delete-card {
+    width: 100%;
+
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    padding: 30px;
+
+    box-sizing: border-box;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 4px 16px rgba(15, 23, 42, 0.06);
+
+    text-align: center;
+}
+
+
+.member-trainer-delete-icon {
+    width: 58px;
+
+    height: 58px;
+
+    margin: 0 auto 16px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #fee2e2;
+
+    color: #dc2626;
+
+    border-radius: 50%;
+
+    font-size: 26px;
+
+    font-weight: 700;
+}
+
+
+.member-trainer-delete-card h2 {
+    margin: 0 0 10px;
+
+    color: #0f172a;
+
+    font-size: 22px;
+
+    font-weight: 700;
+}
+
+
+.member-trainer-delete-message {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* Warning */
+
+.member-trainer-delete-warning {
+    margin: 20px 0;
+
+    padding: 14px 16px;
+
+    background: #fff7ed;
+
+    border: 1px solid #fed7aa;
+
+    border-radius: 9px;
+
+    color: #9a3412;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    text-align: left;
+}
+
+
+/* =========================================================
+   ASSIGNMENT DETAILS
+========================================================= */
+
+.member-trainer-delete-info {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    margin-top: 20px;
+
+    padding: 18px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 10px;
+
+    text-align: left;
+}
+
+
+.member-trainer-delete-detail {
+    padding: 8px;
+}
+
+
+.member-trainer-delete-detail span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+.member-trainer-delete-detail strong {
+    display: block;
+
+    color: #334155;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.member-trainer-delete-actions {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+
+.member-trainer-delete-button {
+    min-width: 145px;
+
+    height: 42px;
+
+    padding: 0 20px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #dc2626;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.member-trainer-delete-button:hover {
+    background: #b91c1c;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   DELETE POPUP
+========================================================= */
+
+.member-trainer-delete-popup {
+    position: relative;
+
+    width: 100%;
+
+    max-width: 450px;
+
+    padding: 30px;
+
+    box-sizing: border-box;
+
+    background: #ffffff;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 20px 50px rgba(15, 23, 42, 0.25);
+
+    text-align: center;
+
+    animation: memberTrainerDeletePopupShow 0.2s ease;
+}
+
+
+@keyframes memberTrainerDeletePopupShow {
+
+    from {
+        opacity: 0;
+
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: scale(1);
+    }
+
+}
+
+
+.member-trainer-delete-popup h2 {
+    margin: 0 0 10px;
+
+    color: #0f172a;
+
+    font-size: 22px;
+}
+
+
+.member-trainer-delete-popup p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+.member-trainer-delete-popup p strong {
+    color: #334155;
+}
+
+
+/* Popup Warning */
+
+.member-trainer-popup-warning {
+    margin: 20px 0;
+
+    padding: 12px 15px;
+
+    background: #fff7ed;
+
+    border: 1px solid #fed7aa;
+
+    border-radius: 8px;
+
+    color: #9a3412;
+
+    font-size: 13px;
+}
+
+
+/* Popup Actions */
+
+.member-trainer-popup-actions {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 22px;
+}
+
+
+.member-trainer-popup-actions form {
+    margin: 0;
+}
+
+
+.member-trainer-popup-cancel {
+    min-width: 110px;
+
+    height: 42px;
+
+    padding: 0 18px;
+
+    border: 1px solid #dbe2ea;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #475569;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.member-trainer-popup-cancel:hover {
+    background: #f8fafc;
+}
+
+
+.member-trainer-popup-delete {
+    min-width: 145px;
+
+    height: 42px;
+
+    padding: 0 18px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #dc2626;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+
+.member-trainer-popup-delete:hover {
+    background: #b91c1c;
+}
+
+.member-trainer-popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 23, 42, 0.55);
+    z-index: 9999;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .member-trainer-delete-card {
+        padding: 22px;
+    }
+
+
+    .member-trainer-delete-info {
+        grid-template-columns: 1fr;
+    }
+
+
+    .member-trainer-delete-actions {
+        flex-direction: column-reverse;
+
+        align-items: stretch;
+    }
+
+
+    .member-trainer-delete-button,
+    .member-trainer-delete-actions
+    .member-trainer-cancel-button {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .member-trainer-delete-popup {
+        padding: 25px 20px;
+    }
+
+
+    .member-trainer-popup-actions {
+        flex-direction: column;
+    }
+
+
+    .member-trainer-popup-cancel,
+    .member-trainer-popup-delete {
+        width: 100%;
+    }
+
+}

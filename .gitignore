@@ -1,0 +1,14 @@
+.env
+.env.*
+!.env.example
+
+/config/database.php
+*.pem
+*.key
+*.sql
+*.sql.gz
+*.backup
+*.bak
+
+/vendor/
+/node_modules/

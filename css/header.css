@@ -1,0 +1,706 @@
+
+/* =========================================================
+   GYMFIT GLOBAL HEADER
+   Shared by Admin, Trainer and Member portals
+========================================================= */
+
+/* ---------- Global header layout ---------- */
+
+.admin-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    isolation: isolate;
+
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    min-height: 72px;
+    padding: 0 28px;
+
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+
+    overflow: visible;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.admin-header * {
+    box-sizing: border-box;
+}
+
+/* ---------- Brand / Logo ---------- */
+
+.admin-brand,
+.brand-logo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+
+    color: #0b2d5c;
+    text-decoration: none;
+}
+
+.admin-brand {
+    min-width: 180px;
+}
+
+.brand-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 23px;
+}
+
+.brand-text {
+    color: #0b2d5c;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #0b2d5c;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.brand-text h2 {
+    margin: 0;
+    color: #0b2d5c;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.brand-text span {
+    display: block;
+    margin-top: 2px;
+    color: #94a3b8;
+    font-size: 11px;
+}
+
+/* ---------- Navigation ---------- */
+
+.admin-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    flex: 1;
+    min-width: 0;
+
+    overflow-x: auto;
+    overflow-y: visible;
+    scrollbar-width: thin;
+}
+
+.admin-nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    flex-shrink: 0;
+    padding: 10px 11px;
+    border-radius: 8px;
+
+    color: #475569;
+    text-decoration: none;
+    white-space: nowrap;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.admin-nav a:hover {
+    background: #f1f5f9;
+    color: #0b2d5c;
+}
+
+.admin-nav a.active {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.nav-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    flex-shrink: 0;
+    font-size: 15px;
+}
+
+/* ---------- Right side: user actions ---------- */
+
+.admin-user {
+    position: relative;
+    z-index: 10001;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+
+    flex-shrink: 0;
+    margin-left: auto;
+    padding-left: 18px;
+
+    border-left: 1px solid #e5e7eb;
+    overflow: visible;
+}
+
+/* ---------- Dropdown containers ---------- */
+
+.header-dropdown {
+    position: relative;
+    z-index: 10002;
+
+    display: inline-flex;
+    align-items: center;
+
+    flex-shrink: 0;
+    overflow: visible;
+}
+
+/* ---------- Notification button ---------- */
+
+.header-icon-btn {
+    position: relative;
+    z-index: 10003;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+    padding: 0;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 11px;
+
+    background: #f8fafc;
+    color: #334155;
+
+    font-family: inherit;
+    font-size: 20px;
+    line-height: 1;
+
+    cursor: pointer;
+    pointer-events: auto;
+    touch-action: manipulation;
+
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.header-icon-btn:hover {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+}
+
+.header-icon-btn:focus-visible,
+.profile-trigger:focus-visible,
+.change-password-btn:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.35);
+    outline-offset: 3px;
+}
+
+/* ---------- Unread notification badge ---------- */
+
+.notification-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 19px;
+    height: 19px;
+    padding: 0 4px;
+
+    border: 2px solid #ffffff;
+    border-radius: 20px;
+
+    background: #ef4444;
+    color: #ffffff;
+
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* ---------- Shared dropdown panels ---------- */
+
+.header-dropdown-panel {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    z-index: 10010;
+
+    width: 330px;
+    max-width: calc(100vw - 24px);
+    max-height: min(420px, calc(100vh - 100px));
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+
+    background: #ffffff;
+    color: #1e293b;
+
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.16);
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: left;
+
+    pointer-events: auto;
+}
+
+/* Hidden panels must remain hidden. */
+.header-dropdown-panel[hidden] {
+    display: none !important;
+}
+
+/* ---------- Dropdown heading ---------- */
+
+.dropdown-heading {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+
+    padding: 15px 16px;
+
+    border-bottom: 1px solid #e2e8f0;
+    background: #ffffff;
+}
+
+.dropdown-heading strong {
+    color: #0f172a;
+    font-size: 15px;
+}
+
+.dropdown-heading span {
+    color: #64748b;
+    font-size: 12px;
+}
+
+/* ---------- Notification list ---------- */
+
+.notification-list {
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.notification-item {
+    padding: 13px 16px;
+    border-bottom: 1px solid #f1f5f9;
+    overflow-wrap: anywhere;
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+.notification-item.unread {
+    border-left: 3px solid #2563eb;
+    background: #eff6ff;
+}
+
+.notification-item strong,
+.notification-item-title {
+    display: block;
+    margin-bottom: 4px;
+    color: #0f172a;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.notification-item p {
+    margin: 5px 0;
+    color: #475569;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.notification-item small {
+    color: #8490a2;
+    font-size: 11px;
+}
+
+.notification-empty,
+.dropdown-empty {
+    padding: 24px 16px;
+    color: #64748b;
+    font-size: 13px;
+    text-align: center;
+}
+
+.notification-empty p,
+.dropdown-empty p {
+    margin: 8px 0 0;
+}
+
+.dropdown-empty > span {
+    font-size: 26px;
+}
+
+/* ---------- Profile trigger ---------- */
+
+.profile-trigger {
+    position: relative;
+    z-index: 10003;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    min-height: 44px;
+    padding: 4px 7px;
+
+    border: 1px solid transparent;
+    border-radius: 10px;
+
+    background: transparent;
+    color: #1e293b;
+
+    font-family: inherit;
+    font-size: 14px;
+    text-align: left;
+
+    cursor: pointer;
+    pointer-events: auto;
+    touch-action: manipulation;
+
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.profile-trigger:hover {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+}
+
+/* Support both avatar class names used by older pages. */
+.profile-avatar,
+.user-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+
+    border-radius: 50%;
+    background: #2864e8;
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.user-avatar {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+.profile-trigger .user-info,
+.profile-trigger .profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+}
+
+.profile-trigger .user-info strong,
+.profile-trigger .profile-info strong {
+    display: block;
+    color: #0f172a;
+    font-size: 13px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.profile-trigger .user-info small,
+.profile-trigger .user-info span,
+.profile-trigger .profile-info small,
+.profile-trigger .profile-info span {
+    display: block;
+    color: #64748b;
+    font-size: 11px;
+}
+
+.profile-chevron {
+    color: #64748b;
+    font-size: 12px;
+}
+
+/* ---------- Profile dropdown content ---------- */
+
+.profile-panel {
+    width: 250px;
+}
+
+.profile-panel-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 15px 16px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.profile-panel-heading > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.profile-panel-heading strong {
+    color: #0f172a;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.profile-panel-heading small {
+    color: #64748b;
+    font-size: 12px;
+}
+
+.profile-menu {
+    padding: 6px;
+}
+
+.profile-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 11px 12px;
+    border-radius: 8px;
+
+    color: #273449;
+    font-size: 13px;
+    text-decoration: none;
+
+    transition: background 0.2s ease;
+}
+
+.profile-menu a:hover {
+    background: #f1f5f9;
+}
+
+.profile-menu .logout-link {
+    color: #dc2626;
+}
+
+/* ---------- Older standalone account controls ---------- */
+
+.change-password-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+    margin-left: 2px;
+    flex-shrink: 0;
+
+    border: 1px solid #dbeafe;
+    border-radius: 9px;
+
+    background: #eff6ff;
+    color: #1d4ed8;
+
+    text-decoration: none;
+    font-size: 15px;
+    cursor: pointer;
+
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.change-password-btn:hover {
+    background: #dbeafe;
+    transform: translateY(-1px);
+}
+
+.logout-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+
+    border-radius: 8px;
+    background: #fef2f2;
+    color: #dc2626;
+
+    text-decoration: none;
+    font-size: 18px;
+
+    transition: background 0.2s ease;
+}
+
+.logout-btn:hover {
+    background: #fee2e2;
+}
+
+/* ---------- Responsive: medium screens ---------- */
+
+@media (max-width: 1200px) {
+    .admin-header {
+        gap: 14px;
+        padding: 0 18px;
+    }
+
+    .admin-brand {
+        min-width: 140px;
+    }
+
+    .admin-nav a {
+        padding: 9px;
+    }
+}
+
+/* ---------- Responsive: tablets ---------- */
+
+@media (max-width: 900px) {
+    .admin-header {
+        flex-wrap: wrap;
+        gap: 12px;
+        min-height: auto;
+        padding: 12px 18px;
+    }
+
+    .admin-brand {
+        min-width: 0;
+    }
+
+    .admin-user {
+        margin-left: auto;
+        padding-left: 12px;
+    }
+
+    .admin-nav {
+        order: 3;
+        flex-basis: 100%;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .admin-nav a {
+        flex-shrink: 0;
+    }
+}
+
+/* ---------- Responsive: mobile ---------- */
+
+@media (max-width: 600px) {
+    .admin-header {
+        gap: 8px;
+        padding: 10px 12px;
+    }
+
+    .brand-logo {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+
+    .brand-text,
+    .brand-text h2 {
+        font-size: 16px;
+    }
+
+    .brand-text span {
+        display: none;
+    }
+
+    .admin-user {
+        gap: 6px;
+        padding-left: 8px;
+    }
+
+    .header-icon-btn {
+        width: 38px;
+        height: 38px;
+    }
+
+    .profile-trigger {
+        min-height: 40px;
+        gap: 4px;
+        padding: 2px;
+    }
+
+    .profile-trigger .profile-avatar,
+    .profile-trigger .user-avatar {
+        width: 36px;
+        height: 36px;
+    }
+
+    .profile-trigger .user-info,
+    .profile-trigger .profile-info,
+    .profile-trigger .profile-chevron {
+        display: none;
+    }
+
+    .admin-nav {
+        gap: 3px;
+    }
+
+    .admin-nav a {
+        padding: 8px 9px;
+        font-size: 12px;
+    }
+
+    .nav-icon {
+        display: none;
+    }
+
+    .header-dropdown-panel {
+        width: 310px;
+        max-width: calc(100vw - 20px);
+        right: 0;
+    }
+}
+
+/* ---------- Accessibility ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    .admin-nav a,
+    .header-icon-btn,
+    .profile-trigger,
+    .change-password-btn,
+    .logout-btn,
+    .profile-menu a {
+        transition: none;
+    }
+}

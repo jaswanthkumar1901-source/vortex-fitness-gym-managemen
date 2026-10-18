@@ -1,0 +1,240 @@
+
+/* =========================================================
+   GYMFIT - RAZORPAY PAYMENT PAGE
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #172b4d;
+    background: #f3f6fc;
+}
+
+.payment-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 18px;
+}
+
+.payment-container {
+    width: 100%;
+    max-width: 540px;
+}
+
+/* Brand */
+
+.payment-brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    color: #173b70;
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.payment-brand-icon {
+    font-size: 30px;
+}
+
+/* Main card */
+
+.payment-card {
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid #e0e8f5;
+    border-radius: 20px;
+    box-shadow: 0 16px 45px rgba(30, 64, 120, 0.09);
+}
+
+.payment-card-top {
+    height: 6px;
+    background: linear-gradient(90deg, #2563eb, #60a5fa);
+}
+
+.payment-card-content {
+    padding: 34px;
+}
+
+.payment-eyebrow {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: #2563eb;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+}
+
+.payment-card h1 {
+    margin: 0 0 10px;
+    color: #142746;
+    font-size: 29px;
+    line-height: 1.3;
+}
+
+.payment-subtitle {
+    margin: 0 0 28px;
+    color: #718096;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* Plan details */
+
+.payment-plan-box {
+    padding: 22px;
+    margin-bottom: 22px;
+    background: #f7f9fe;
+    border: 1px solid #e4ebf6;
+    border-radius: 14px;
+}
+
+.payment-plan-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #7a8ba5;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.payment-plan-name {
+    margin: 0;
+    color: #1d3557;
+    font-size: 23px;
+    font-weight: 750;
+}
+
+.payment-divider {
+    height: 1px;
+    margin: 20px 0;
+    background: #e1e8f2;
+}
+
+.payment-amount-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.payment-amount-label {
+    color: #687b96;
+    font-size: 14px;
+}
+
+.payment-amount {
+    color: #1d4ed8;
+    font-size: 27px;
+    font-weight: 800;
+}
+
+/* Payment button */
+
+.payment-button {
+    display: flex;
+    width: 100%;
+    min-height: 52px;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #2563eb;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 750;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.payment-button:hover {
+    background: #1d4ed8;
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.22);
+    transform: translateY(-1px);
+}
+
+.payment-button:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 3px;
+}
+
+.payment-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+    transform: none;
+}
+
+/* Security note */
+
+.payment-security {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+    color: #728198;
+    font-size: 12px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.payment-security-icon {
+    color: #16a34a;
+    font-size: 16px;
+}
+
+/* Back link */
+
+.payment-back {
+    display: block;
+    width: fit-content;
+    margin: 22px auto 0;
+    color: #41638f;
+    font-size: 13px;
+    font-weight: 650;
+    text-decoration: none;
+}
+
+.payment-back:hover {
+    color: #2563eb;
+}
+
+/* Responsive */
+
+@media (max-width: 480px) {
+    .payment-page {
+        padding: 20px 14px;
+    }
+
+    .payment-card-content {
+        padding: 24px 20px;
+    }
+
+    .payment-card h1 {
+        font-size: 25px;
+    }
+
+    .payment-plan-box {
+        padding: 18px;
+    }
+
+    .payment-amount {
+        font-size: 23px;
+    }
+}

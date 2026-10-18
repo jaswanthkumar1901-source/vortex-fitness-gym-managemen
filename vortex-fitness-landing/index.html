@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VORTEX FITNESS — Train with purpose. Build your stronger future.">
+  <title>VORTEX FITNESS | Your Fitness Journey</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --lime: #c5f65a; --dark: #10130e; --muted: #aeb5a8; }
+    body { font-family: Arial, sans-serif; color: white; background: var(--dark); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, 90%); margin: auto; }
+    header { position: sticky; top: 0; z-index: 10; background: #f7f7f2; color: #171914; }
+    nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .logo { font-weight: 900; font-size: 1.4rem; letter-spacing: -1px; }
+    .logo span { color: #6f932d; }
+    .links { display: flex; gap: 25px; align-items: center; font-size: .9rem; font-weight: 700; }
+    .btn { display: inline-block; border: 0; border-radius: 30px; padding: 13px 22px; background: var(--lime); color: #15190e; font-weight: 800; cursor: pointer; }
+    .hero { min-height: 590px; display: flex; align-items: center; background: linear-gradient(90deg,rgba(0,0,0,.91),rgba(0,0,0,.36)),url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1800&q=85') center/cover; }
+    .hero-content { max-width: 680px; padding: 90px 0; }
+    .eyebrow { color: var(--lime); text-transform: uppercase; letter-spacing: 3px; font-size: .8rem; font-weight: 800; }
+    h1 { font-size: clamp(2.7rem, 7vw, 5.4rem); line-height: 1.02; letter-spacing: -3px; margin: 22px 0; }
+    h1 span { color: var(--lime); }
+    .hero p { color: #e2e4dc; max-width: 520px; margin-bottom: 28px; }
+    section { padding: 78px 0; }
+    .section-title { font-size: clamp(2rem, 4vw, 3rem); margin: 8px 0 14px; }
+    .intro { color: var(--muted); max-width: 650px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 32px; }
+    .card { padding: 28px; background: #1b2017; border: 1px solid #30372a; border-radius: 18px; }
+    .card .symbol { font-size: 2rem; }
+    .card h3 { margin: 14px 0 8px; }
+    .card p { color: var(--muted); }
+    .price { color: var(--lime); font-size: 1.7rem; font-weight: 900; margin: 16px 0; }
+    .cta { background: var(--lime); color: #15190e; text-align: center; border-radius: 22px; padding: 48px 20px; }
+    .cta p { margin: 10px auto 22px; max-width: 560px; }
+    .cta .btn { background: #15190e; color: white; }
+    footer { border-top: 1px solid #30372a; padding: 28px 0; color: var(--muted); font-size: .85rem; }
+    footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+    @media(max-width:760px) {
+      nav { padding: 17px 0; align-items: flex-start; flex-direction: column; }
+      .links { flex-wrap: wrap; gap: 14px; }
+      .grid { grid-template-columns: 1fr; }
+      .hero { min-height: 520px; }
+      h1 { letter-spacing: -1.5px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="wrap">
+      <a class="logo" href="#home">VORTEX <span>FITNESS</span></a>
+      <div class="links">
+        <a href="#home">Home</a>
+        <a href="#features">Features</a>
+        <a href="#plans">Plans</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" href="https://3.25.154.187/gym-management/">Member Sign In ↗</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-content">
+        <div class="eyebrow">Your fitness. Your journey.</div>
+        <h1>BUILD YOUR<br><span>STRONGER</span><br>FUTURE.</h1>
+        <p>Train with purpose. Stay consistent. Achieve your fitness goals with professional trainers and modern facilities.</p>
+        <a class="btn" href="https://3.25.154.187/gym-management/">Explore Memberships ↗</a>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="wrap">
+        <div class="eyebrow">Why Vortex?</div>
+        <h2 class="section-title">BUILT FOR YOUR BEST.</h2>
+        <p class="intro">Everything you need to make every workout count, from quality equipment to support that keeps you moving forward.</p>
+        <div class="grid">
+          <article class="card"><div class="symbol">🏋️</div><h3>Modern Equipment</h3><p>Train with equipment designed to support strength, endurance and progress.</p></article>
+          <article class="card"><div class="symbol">🎯</div><h3>Expert Trainers</h3><p>Build a routine around your goals with guidance and consistent support.</p></article>
+          <article class="card"><div class="symbol">📈</div><h3>Track Your Progress</h3><p>Use your member account to manage your fitness journey and membership.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="plans">
+      <div class="wrap">
+        <div class="eyebrow">Find your fit</div>
+        <h2 class="section-title">MEMBERSHIP OPTIONS</h2>
+        <p class="intro">Choose a plan that works for you. View current prices and availability in the membership application.</p>
+        <div class="grid">
+          <article class="card"><h3>Starter</h3><p>Begin building a consistent fitness routine.</p><div class="price">View plans</div><a class="btn" href="https://3.25.154.187/gym-management/">Explore plans ↗</a></article>
+          <article class="card"><h3>Strength</h3><p>Keep progressing with a routine that fits your goals.</p><div class="price">View plans</div><a class="btn" href="https://3.25.154.187/gym-management/">Explore plans ↗</a></article>
+          <article class="card"><h3>Performance</h3><p>Make training part of your long-term lifestyle.</p><div class="price">View plans</div><a class="btn" href="https://3.25.154.187/gym-management/">Explore plans ↗</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="cta">
+          <h2>READY TO GET STARTED?</h2>
+          <p>Open your VORTEX FITNESS account to explore membership options and begin your journey.</p>
+          <a class="btn" href="https://3.25.154.187/gym-management/">Enter VORTEX FITNESS ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>© <span id="year"></span> VORTEX FITNESS</div>
+      <div>Train with purpose. Make every workout count.</div>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,514 @@
+/* =========================================================
+   MEMBERSHIP PLAN FORM
+   Used by:
+   - plans/add.php
+   - plans/edit.php
+   - plans/delete.php
+========================================================= */
+
+.plan-form-page {
+    min-height: calc(100vh - 80px);
+    background: #F5F4EE;
+    padding: 35px 40px 50px;
+    box-sizing: border-box;
+    font-family: Inter, Arial, sans-serif;
+    color: #171916;
+}
+
+/* Page Header */
+
+.plan-form-header {
+    max-width: 1100px;
+    margin: 0 auto 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.plan-form-label {
+    display: block;
+    margin-bottom: 6px;
+    color: #6C8B2B;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.plan-form-header h1 {
+    margin: 0;
+    color: #171916;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -0.7px;
+}
+
+.plan-form-header p {
+    margin: 8px 0 0;
+    color: #696D64;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Back Button */
+
+.plan-back-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 17px;
+    border: 1px solid #E3E5DB;
+    border-radius: 999px;
+    background: #FFFFFF;
+    color: #33362F;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.plan-back-button:hover {
+    background: #F9F9F4;
+    border-color: #C6F36B;
+    transform: translateY(-1px);
+}
+
+/* Form Card */
+
+.plan-form-card {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    border: 1px solid #E6E7DF;
+    border-radius: 22px;
+    box-shadow: 0 10px 28px rgba(23, 25, 22, 0.06);
+    overflow: hidden;
+}
+
+/* Card Header */
+
+.plan-form-card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 22px 26px;
+    border-bottom: 1px solid #ECEDE6;
+    background: #FCFCF8;
+}
+
+.plan-form-icon {
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #EEF5DC;
+    color: #5D7F22;
+    border-radius: 14px;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.plan-form-card-header h2 {
+    margin: 0;
+    color: #171916;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.plan-form-card-header p {
+    margin: 4px 0 0;
+    color: #696D64;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* Form */
+
+.plan-form {
+    padding: 28px;
+}
+
+.plan-form-group {
+    margin-bottom: 20px;
+}
+
+.plan-form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #33362F;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* Inputs */
+
+.plan-form-group input,
+.plan-form-group textarea,
+.plan-form-group select {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #E3E5DB;
+    border-radius: 12px;
+    background: #FFFFFF;
+    color: #171916;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.plan-form-group input,
+.plan-form-group select {
+    height: 46px;
+    padding: 0 14px;
+}
+
+.plan-form-group textarea {
+    padding: 12px 14px;
+    resize: vertical;
+    min-height: 110px;
+    line-height: 1.6;
+}
+
+.plan-form-group input::placeholder,
+.plan-form-group textarea::placeholder {
+    color: #9A9D93;
+}
+
+.plan-form-group input:focus,
+.plan-form-group textarea:focus,
+.plan-form-group select:focus {
+    border-color: #A7D94E;
+    box-shadow: 0 0 0 4px rgba(198, 243, 107, 0.22);
+}
+
+/* Price + Duration Row */
+
+.plan-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+/* Price Input */
+
+.plan-input-prefix {
+    position: relative;
+}
+
+.plan-input-prefix span {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #696D64;
+    font-size: 14px;
+    font-weight: 700;
+    pointer-events: none;
+}
+
+.plan-input-prefix input {
+    padding-left: 32px;
+}
+
+/* Duration Input */
+
+.plan-input-suffix {
+    position: relative;
+}
+
+.plan-input-suffix span {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #696D64;
+    font-size: 13px;
+    font-weight: 700;
+    pointer-events: none;
+}
+
+.plan-input-suffix input {
+    padding-right: 60px;
+}
+
+/* Form Actions */
+
+.plan-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid #ECEDE6;
+}
+
+/* Cancel */
+
+.plan-cancel-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+    min-height: 44px;
+    padding: 0 18px;
+    border: 1px solid #E3E5DB;
+    border-radius: 999px;
+    background: #FFFFFF;
+    color: #4D5147;
+    text-decoration: none;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    box-sizing: border-box;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.plan-cancel-button:hover {
+    background: #F5F4EE;
+    border-color: #D4D7CB;
+}
+
+/* Submit */
+
+.plan-submit-button {
+    min-width: 170px;
+    min-height: 44px;
+    padding: 0 20px;
+    border: 1px solid #C6F36B;
+    border-radius: 999px;
+    background: #C6F36B;
+    color: #171916;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.plan-submit-button:hover {
+    background: #B7E65A;
+    border-color: #B7E65A;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(113, 153, 41, 0.16);
+}
+
+.plan-submit-button:focus-visible,
+.plan-cancel-button:focus-visible,
+.plan-back-button:focus-visible {
+    outline: 3px solid rgba(167, 217, 78, 0.65);
+    outline-offset: 2px;
+}
+
+/* =========================================================
+   DELETE MEMBERSHIP PLAN
+========================================================= */
+
+.plan-delete-error {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 20px;
+    padding: 13px 16px;
+    box-sizing: border-box;
+    background: #FFF1F0;
+    border: 1px solid #F4C9C5;
+    border-radius: 14px;
+    color: #A42D25;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.plan-delete-card {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #E6E7DF;
+    border-radius: 22px;
+    box-shadow: 0 10px 28px rgba(23, 25, 22, 0.06);
+    text-align: center;
+}
+
+.plan-delete-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFF1F0;
+    color: #C63B32;
+    border-radius: 50%;
+    font-size: 26px;
+    font-weight: 800;
+}
+
+.plan-delete-card h2 {
+    margin: 0 0 10px;
+    color: #171916;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.plan-delete-message {
+    margin: 0;
+    color: #696D64;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.plan-delete-warning {
+    margin: 20px 0;
+    padding: 14px 16px;
+    background: #FFF8E8;
+    border: 1px solid #F1DEAC;
+    border-radius: 14px;
+    color: #815D16;
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.plan-delete-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+    padding: 18px;
+    background: #F9F9F4;
+    border: 1px solid #E6E7DF;
+    border-radius: 16px;
+    text-align: left;
+}
+
+.plan-delete-detail {
+    padding: 8px;
+    min-width: 0;
+}
+
+.plan-delete-detail span {
+    display: block;
+    margin-bottom: 5px;
+    color: #85897D;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.plan-delete-detail strong {
+    display: block;
+    color: #33362F;
+    font-size: 14px;
+    font-weight: 700;
+    word-break: break-word;
+}
+
+.plan-delete-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.plan-delete-button {
+    min-width: 170px;
+    min-height: 44px;
+    padding: 0 20px;
+    border: 1px solid #C63B32;
+    border-radius: 999px;
+    background: #C63B32;
+    color: #FFFFFF;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.plan-delete-button:hover {
+    background: #A92D26;
+    border-color: #A92D26;
+    transform: translateY(-1px);
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .plan-form-page {
+        padding: 25px 18px 40px;
+    }
+
+    .plan-form-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .plan-form-header h1 {
+        font-size: 25px;
+    }
+
+    .plan-back-button {
+        width: 100%;
+    }
+
+    .plan-form-card {
+        max-width: 100%;
+    }
+
+    .plan-form {
+        padding: 20px;
+    }
+
+    .plan-form-card-header {
+        padding: 20px;
+    }
+
+    .plan-form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .plan-form-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .plan-cancel-button,
+    .plan-submit-button {
+        width: 100%;
+    }
+
+    .plan-delete-card {
+        padding: 22px;
+    }
+
+    .plan-delete-info {
+        grid-template-columns: 1fr;
+    }
+
+    .plan-delete-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .plan-delete-button,
+    .plan-delete-actions .plan-cancel-button {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .plan-back-button,
+    .plan-submit-button,
+    .plan-delete-button {
+        transition: none;
+    }
+}

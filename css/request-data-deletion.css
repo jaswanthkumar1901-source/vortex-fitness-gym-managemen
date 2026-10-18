@@ -1,0 +1,251 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --bg: #080a08;
+    --card: #111511;
+    --lime: #84cc16;
+    --lime-light: #a3e635;
+    --text: #f3f4f3;
+    --muted: #a1a9a1;
+    --border: #2a3329;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+a {
+    color: var(--lime-light);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.page-header {
+    min-height: 76px;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.brand {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--text);
+}
+
+.brand span {
+    color: var(--lime);
+}
+
+.back-link {
+    font-size: 14px;
+}
+
+.deletion-container {
+    width: min(760px, 92%);
+    margin: 55px auto;
+}
+
+.deletion-card {
+    padding: 36px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.eyebrow {
+    color: var(--lime);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+h1 {
+    font-size: clamp(28px, 5vw, 38px);
+    margin: 14px 0;
+}
+
+.intro {
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 13px 14px;
+    background: #090c09;
+    color: var(--text);
+    border: 1px solid #374137;
+    border-radius: 9px;
+    font: inherit;
+    font-size: 14px;
+}
+
+select {
+    cursor: pointer;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid var(--lime);
+    outline-offset: 2px;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.notice {
+    padding: 18px;
+    margin: 25px 0;
+    border: 1px solid #45552e;
+    border-left: 4px solid var(--lime);
+    border-radius: 8px;
+    background: #151b11;
+}
+
+.notice strong {
+    color: var(--lime-light);
+}
+
+.notice p {
+    margin-bottom: 0;
+    color: #c4ccc1;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    margin: 22px 0;
+    color: #d5dbd3;
+    font-size: 13px;
+    line-height: 1.7;
+    cursor: pointer;
+}
+
+.checkbox-label input {
+    margin-top: 4px;
+    accent-color: var(--lime);
+    flex-shrink: 0;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 15px;
+    background: var(--lime);
+    color: #10140c;
+    border: none;
+    border-radius: 9px;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.submit-button:hover {
+    background: var(--lime-light);
+    transform: translateY(-1px);
+}
+
+.alert {
+    padding: 14px 16px;
+    margin: 20px 0;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.alert-success {
+    background: #142516;
+    color: #b6f5b9;
+    border: 1px solid #326b37;
+}
+
+.alert-error {
+    background: #2a1515;
+    color: #ffc4c4;
+    border: 1px solid #753636;
+}
+
+.policy-links {
+    margin-top: 25px;
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.8;
+}
+
+.site-footer {
+    padding: 24px;
+    text-align: center;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+}
+
+@media (max-width: 600px) {
+    .page-header {
+        padding: 16px 5%;
+    }
+
+    .brand {
+        font-size: 16px;
+    }
+
+    .back-link {
+        font-size: 12px;
+    }
+
+    .deletion-container {
+        margin: 28px auto;
+    }
+
+    .deletion-card {
+        padding: 23px 18px;
+    }
+}

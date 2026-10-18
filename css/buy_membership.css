@@ -1,0 +1,444 @@
+
+/* =========================================================
+   GYMFIT - BUY MEMBERSHIP PAGE
+   Complete responsive stylesheet
+========================================================= */
+
+/* ---------- Base page ---------- */
+
+.buy-membership-page {
+    width: 100%;
+    max-width: 1500px;
+    min-height: calc(100vh - 80px);
+    margin: 0 auto;
+    padding: 36px clamp(18px, 4vw, 56px) 55px;
+    background: #f4f7fc;
+    color: #17233b;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+.buy-membership-page *,
+.buy-membership-page *::before,
+.buy-membership-page *::after {
+    box-sizing: border-box;
+}
+
+/* ---------- Page heading ---------- */
+
+.buy-membership-page .buy-membership-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 0 0 26px;
+}
+
+.buy-membership-page .page-label {
+    display: inline-block;
+    margin: 0 0 2px;
+    color: #2563eb;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+}
+
+.buy-membership-page .buy-membership-heading h1 {
+    margin: 0;
+    color: #12213b;
+    font-size: clamp(28px, 3vw, 36px);
+    font-weight: 750;
+    line-height: 1.25;
+}
+
+.buy-membership-page .page-description {
+    max-width: 760px;
+    margin: 0;
+    color: #64748b;
+    font-size: 15px;
+    line-height: 1.75;
+}
+
+/* ---------- Back to dashboard ---------- */
+
+.buy-membership-page .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    color: #2563eb;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.buy-membership-page .back-link:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+/* ---------- Member information notice ---------- */
+
+.buy-membership-page .notice {
+    margin: 20px 0 26px;
+    padding: 16px 20px;
+    border: 1px solid #bfdbfe;
+    border-radius: 12px;
+    background: #eff6ff;
+    color: #1e40af;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.buy-membership-page .notice strong {
+    color: #1d4ed8;
+    font-weight: 700;
+}
+
+/* ---------- Current membership ---------- */
+
+.buy-membership-page .current-membership {
+    margin: 22px 0 34px;
+    padding: 25px 28px;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #2563eb;
+    border-radius: 15px;
+    background: #ffffff;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.045);
+}
+
+.buy-membership-page .current-membership h2 {
+    margin: 0 0 18px;
+    color: #17233b;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.buy-membership-page .current-membership p {
+    margin: 10px 0;
+    color: #475569;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.buy-membership-page .current-membership p strong {
+    color: #334155;
+}
+
+.buy-membership-page .membership-status {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 6px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #dcfce7;
+    color: #15803d;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.buy-membership-page .membership-status.expired {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+/* ---------- Available plans section ---------- */
+
+.buy-membership-page .plans-section {
+    margin-top: 34px;
+}
+
+.buy-membership-page .plans-section > h2 {
+    margin: 0 0 8px;
+    color: #17233b;
+    font-size: 25px;
+    font-weight: 750;
+    line-height: 1.4;
+}
+
+.buy-membership-page .plans-section > p {
+    margin: 0 0 24px;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* ---------- Plans grid ---------- */
+
+.buy-membership-page .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 22px;
+}
+
+/* ---------- Individual plan card ---------- */
+
+.buy-membership-page .plan-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 25px;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.045);
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.buy-membership-page .plan-card:hover {
+    transform: translateY(-3px);
+    border-color: #bfdbfe;
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.085);
+}
+
+/* ---------- Plan icon ---------- */
+
+.buy-membership-page .plan-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    margin: 0 0 18px;
+    border-radius: 13px;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 23px;
+    line-height: 1;
+}
+
+/* ---------- Plan name ---------- */
+
+.buy-membership-page .plan-card h3 {
+    margin: 0 0 10px;
+    color: #17233b;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+/* ---------- Plan description ---------- */
+
+.buy-membership-page .plan-description {
+    margin: 0 0 18px;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.75;
+    overflow-wrap: anywhere;
+}
+
+/* ---------- Plan price ---------- */
+
+.buy-membership-page .plan-price {
+    margin-top: auto;
+    color: #17233b;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+/* ---------- Plan duration ---------- */
+
+.buy-membership-page .plan-duration {
+    margin: 7px 0 20px;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* ---------- Plan features ---------- */
+
+.buy-membership-page .plan-features {
+    margin: 0 0 24px;
+    padding: 0 0 0 20px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.buy-membership-page .plan-features li {
+    margin: 0 0 4px;
+    padding-left: 2px;
+}
+
+/* ---------- Select / buy / renew button ---------- */
+
+.buy-membership-page .plan-card form {
+    width: 100%;
+    margin-top: auto;
+}
+
+.buy-membership-page .select-plan-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    min-height: 46px;
+    padding: 12px 18px;
+    border: 1px solid #2563eb;
+    border-radius: 9px;
+    background: #2563eb;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.buy-membership-page .select-plan-btn:hover {
+    border-color: #1d4ed8;
+    background: #1d4ed8;
+    box-shadow: 0 5px 13px rgba(37, 99, 235, 0.2);
+}
+
+.buy-membership-page .select-plan-btn:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 3px;
+}
+
+.buy-membership-page .select-plan-btn:active {
+    transform: translateY(1px);
+}
+
+/* ---------- Payment information ---------- */
+
+.buy-membership-page .payment-notice {
+    margin: 30px 0 0;
+    padding: 19px 22px;
+    border: 1px solid #bfdbfe;
+    border-radius: 12px;
+    background: #eff6ff;
+    color: #1e40af;
+    font-size: 14px;
+    line-height: 1.75;
+}
+
+.buy-membership-page .payment-notice > strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #1d4ed8;
+    font-size: 15px;
+}
+
+.buy-membership-page .payment-notice p {
+    margin: 0;
+}
+
+/* ---------- Empty plans state ---------- */
+
+.buy-membership-page .empty-state {
+    padding: 42px 24px;
+    border: 1px solid #e2e8f0;
+    border-radius: 15px;
+    background: #ffffff;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04);
+}
+
+.buy-membership-page .empty-state h3 {
+    margin: 0 0 10px;
+    color: #17233b;
+    font-size: 20px;
+}
+
+.buy-membership-page .empty-state p {
+    margin: 0;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* ---------- Tablet layout ---------- */
+
+@media (max-width: 1050px) {
+    .buy-membership-page .plans-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .buy-membership-page .plan-card {
+        padding: 22px;
+    }
+}
+
+/* ---------- Mobile layout ---------- */
+
+@media (max-width: 640px) {
+    .buy-membership-page {
+        padding: 25px 16px 38px;
+    }
+
+    .buy-membership-page .buy-membership-heading {
+        margin-bottom: 22px;
+    }
+
+    .buy-membership-page .buy-membership-heading h1 {
+        font-size: 28px;
+    }
+
+    .buy-membership-page .page-description {
+        font-size: 14px;
+    }
+
+    .buy-membership-page .notice,
+    .buy-membership-page .current-membership,
+    .buy-membership-page .payment-notice {
+        padding: 19px;
+    }
+
+    .buy-membership-page .current-membership h2,
+    .buy-membership-page .plans-section > h2 {
+        font-size: 21px;
+    }
+
+    .buy-membership-page .plans-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
+
+    .buy-membership-page .plan-card {
+        padding: 22px;
+    }
+
+    .buy-membership-page .plan-card h3 {
+        font-size: 19px;
+    }
+
+    .buy-membership-page .plan-price {
+        font-size: 26px;
+    }
+
+    .buy-membership-page .select-plan-btn {
+        min-height: 46px;
+    }
+}
+
+/* ---------- Reduced motion accessibility ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    .buy-membership-page .plan-card,
+    .buy-membership-page .select-plan-btn,
+    .buy-membership-page .back-link {
+        transition: none;
+    }
+
+    .buy-membership-page .plan-card:hover {
+        transform: none;
+    }
+}

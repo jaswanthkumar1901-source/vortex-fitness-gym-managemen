@@ -1,0 +1,1081 @@
+/* =========================================================
+   GYMFIT - MEMBER ATTENDANCE
+========================================================= */
+
+.member-attendance-page {
+    padding: 38px 5%;
+    background: #f5f7fb;
+    min-height: calc(100vh - 80px);
+}
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.page-header {
+    margin-bottom: 28px;
+}
+
+.page-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    color: #2563eb;
+}
+
+.page-header h1 {
+    margin: 6px 0;
+    font-size: 30px;
+    color: #0f172a;
+}
+
+.page-header p {
+    margin: 0;
+    color: #64748b;
+    font-size: 15px;
+}
+
+/* =========================================================
+   ATTENDANCE OVERVIEW
+========================================================= */
+
+.attendance-overview {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 22px;
+    margin-bottom: 24px;
+}
+
+/* =========================================================
+   SPEEDOMETER CARD
+========================================================= */
+
+.attendance-gauge-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: 0 5px 18px rgba(15, 23, 42, 0.06);
+    overflow: hidden;
+}
+
+.gauge-title {
+    text-align: center;
+}
+
+.gauge-title h2 {
+    margin: 7px 0 0;
+    color: #0f172a;
+    font-size: 23px;
+}
+
+/* =========================================================
+   SPEEDOMETER
+
+   GEOMETRY (all elements share ONE pivot point):
+   - Gauge box ........ 340 x 215
+   - Ring circle ...... 300 x 300, left 20 / top 30
+   - Pivot (centre) ... x = 170, y = 180
+   - Hand pivot ....... left 50% (170), bottom 35px (215 - 35 = 180)
+
+   ONE CSS VARIABLE DRIVES EVERYTHING:
+   --gauge-progress-angle : 0deg (0%)  ->  180deg (100%)
+   The needle, the coloured arc and (via JS) the number all
+   read the same value, so they can never go out of sync.
+========================================================= */
+
+.speedometer {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.gauge {
+    --gauge-progress-angle: 0deg;
+
+    width: 340px;
+    height: 215px;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    transform-origin: top center;
+}
+
+/* Static background meter (top half only, 270deg = left, 90deg = top, 180deg = right) */
+.gauge::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    left: 20px;
+    top: 30px;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 270deg,
+        #F3EFE7 0deg 180deg,
+        transparent 180deg 360deg
+    );
+    opacity: 1;
+    filter: drop-shadow(0 0 1px rgba(15, 23, 42, 0.14));
+    z-index: 1;
+}
+
+/* Inner cut-out (makes the ring) */
+.gauge::after {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    left: 45px;
+    top: 55px;
+    border-radius: 50%;
+    background: #ffffff;
+    z-index: 2;
+}
+
+/* =========================================================
+   MOVING COLOURED ARC (follows the needle)
+   Starts at the left (270deg) and sweeps clockwise.
+   NO transform here - it must line up with the ring exactly.
+========================================================= */
+
+.gauge-active-meter {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    left: 20px;
+    top: 30px;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 270deg,
+        #0062BD 0deg,
+        #00E5FF var(--gauge-progress-angle),
+        transparent var(--gauge-progress-angle),
+        transparent 360deg
+    );
+    -webkit-mask: radial-gradient(
+        circle at center,
+        transparent 0 125px,
+        #000 126px 150px,
+        transparent 151px
+    );
+    mask: radial-gradient(
+        circle at center,
+        transparent 0 125px,
+        #000 126px 150px,
+        transparent 151px
+    );
+    pointer-events: none;
+    z-index: 4;
+}
+
+/* =========================================================
+   SCALE NUMBERS
+========================================================= */
+
+.gauge-scale {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+}
+
+.gauge-number {
+    position: absolute;
+    font-size: 11px;
+    font-weight: 700;
+    color: #64748b;
+}
+
+.n0 {
+    left: 28px;
+    bottom: 24px;
+}
+
+.n25 {
+    left: 70px;
+    top: 72px;
+}
+
+.n50 {
+    left: 50%;
+    top: 27px;
+    transform: translateX(-50%);
+}
+
+.n75 {
+    right: 70px;
+    top: 72px;
+}
+
+.n100 {
+    right: 24px;
+    bottom: 24px;
+}
+
+/* =========================================================
+   SPEEDOMETER HAND
+   Rotates around its bottom-centre (the gauge pivot).
+   0%   -> -90deg (points left)
+   50%  ->   0deg (points up)
+   100% ->  90deg (points right)
+   The ONLY transform on the hand is this one rule.
+========================================================= */
+
+.gauge-hand {
+    position: absolute;
+    left: calc(50% - 1.5px);
+    bottom: 35px;
+    width: 3px;
+    height: 112px;
+    background: #00B6E6;
+    border: 1px solid #0062BD;
+    border-radius: 10px;
+    transform-origin: 50% 100%;
+    transform: rotate(calc(-90deg + var(--gauge-progress-angle)));
+    z-index: 20;
+    box-shadow: 0 0 6px rgba(15, 23, 42, 0.20);
+    will-change: transform;
+}
+
+/* =========================================================
+   DIGITAL ATTENDANCE VALUE
+========================================================= */
+
+.gauge-value {
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    z-index: 25;
+    text-align: center;
+    background: #ffffff;
+    padding: 3px 14px;
+    border-radius: 8px;
+}
+
+.gauge-value strong {
+    display: block;
+    color: #0f172a;
+    font-size: 25px;
+    font-weight: 800;
+    min-width: 90px;
+    font-variant-numeric: tabular-nums;
+}
+
+.gauge-value span {
+    display: block;
+    margin-top: 1px;
+    color: #64748b;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* =========================================================
+   GAUGE DESCRIPTION
+========================================================= */
+
+.gauge-description {
+    margin: 5px auto 0;
+    max-width: 440px;
+    text-align: center;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* =========================================================
+   OVERALL ATTENDANCE CIRCLE CARD
+========================================================= */
+
+.attendance-circle-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    box-shadow: 0 5px 18px rgba(15, 23, 42, 0.06);
+}
+
+.attendance-circle {
+    --size: 180px;
+    width: var(--size);
+    height: var(--size);
+    min-width: var(--size);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: conic-gradient(
+        #2563eb 0%,
+        #2563eb var(--attendance),
+        #e2e8f0 var(--attendance),
+        #e2e8f0 100%
+    );
+    position: relative;
+    animation: circleAppear 1s ease-out;
+}
+
+.attendance-circle::before {
+    content: "";
+    position: absolute;
+    width: 138px;
+    height: 138px;
+    border-radius: 50%;
+    background: #ffffff;
+}
+
+.circle-inner {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.circle-inner strong {
+    display: block;
+    font-size: 30px;
+    color: #0f172a;
+    font-weight: 800;
+    animation: percentageAppear 1.2s ease-out;
+}
+
+.circle-inner span {
+    display: block;
+    margin-top: 4px;
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+@keyframes circleAppear {
+    from {
+        transform: scale(0.65) rotate(-90deg);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes percentageAppear {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* =========================================================
+   CIRCLE CONTENT
+========================================================= */
+
+.circle-content {
+    flex: 1;
+}
+
+.card-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #64748b;
+}
+
+.circle-content h2 {
+    margin: 7px 0 10px;
+    color: #0f172a;
+    font-size: 23px;
+}
+
+.circle-content p {
+    margin: 0;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   STATISTICS
+========================================================= */
+
+.attendance-statistics {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.stat-card {
+    flex: 1;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 17px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+}
+
+.stat-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #e0f2fe;
+    color: #2563eb;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.stat-card span {
+    display: block;
+    color: #64748b;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.stat-card strong {
+    color: #0f172a;
+    font-size: 17px;
+}
+
+/* =========================================================
+   TODAY ATTENDANCE
+========================================================= */
+
+.today-attendance-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+}
+
+.today-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.today-header h2,
+.section-header h2 {
+    margin: 6px 0 0;
+    font-size: 21px;
+    color: #0f172a;
+}
+
+.today-status {
+    padding: 7px 14px;
+    border-radius: 20px;
+    background: #dcfce7;
+    color: #15803d;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.today-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 22px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.today-details div {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.today-details span {
+    display: block;
+    color: #64748b;
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+
+.today-details strong {
+    color: #0f172a;
+    font-size: 16px;
+}
+
+/* =========================================================
+   MONTHLY / HISTORY CARDS
+========================================================= */
+
+.monthly-attendance-card,
+.attendance-history-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+}
+
+.section-header {
+    margin-bottom: 20px;
+}
+
+.section-header p {
+    margin: 7px 0 0;
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.monthly-table-wrapper,
+.attendance-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.monthly-table,
+.attendance-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.monthly-table th,
+.attendance-table th {
+    text-align: left;
+    padding: 14px 15px;
+    background: #f8fafc;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 700;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.monthly-table td,
+.attendance-table td {
+    padding: 15px;
+    color: #334155;
+    font-size: 14px;
+    border-bottom: 1px solid #eef2f7;
+}
+
+.monthly-table tbody tr:hover,
+.attendance-table tbody tr:hover {
+    background: #f8fafc;
+}
+
+/* =========================================================
+   MONTHLY PERCENTAGE
+========================================================= */
+
+.monthly-percentage {
+    display: inline-block;
+    padding: 6px 11px;
+    border-radius: 20px;
+    background: #e0f2fe;
+    color: #0369a1;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* =========================================================
+   PROGRESS BAR
+========================================================= */
+
+.progress-wrapper {
+    width: 160px;
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    border-radius: 20px;
+    background: #2563eb;
+    transform-origin: left;
+    animation: progressAppear 1s ease-out;
+}
+
+@keyframes progressAppear {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+/* =========================================================
+   ATTENDANCE STATUS
+========================================================= */
+
+.status-completed,
+.status-present {
+    display: inline-block;
+    padding: 6px 11px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.status-completed {
+    background: #e0f2fe;
+    color: #0369a1;
+}
+
+.status-present {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.not-available {
+    color: #94a3b8;
+}
+
+/* =========================================================
+   EMPTY STATES
+========================================================= */
+
+.empty-monthly,
+.empty-attendance {
+    padding: 55px 25px;
+    text-align: center;
+}
+
+.empty-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #e0f2fe;
+    color: #2563eb;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.empty-monthly h2,
+.empty-attendance h2 {
+    margin: 0 0 8px;
+    color: #0f172a;
+}
+
+.empty-monthly p,
+.empty-attendance p {
+    margin: 0;
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* =========================================================
+   ATTENDANCE HISTORY - SEARCH & PAGINATION
+========================================================= */
+
+.attendance-history-search {
+    background: linear-gradient(135deg, #eff6ff 0%, #f8fbff 100%);
+    border: 1px solid #dbeafe;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 18px;
+}
+
+.history-search-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    color: #1e3a8a;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.history-search-icon {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #dbeafe;
+    color: #2563eb;
+    font-size: 16px;
+}
+
+.history-search-form {
+    display: flex;
+    align-items: flex-end;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.history-date-field {
+    flex: 1 1 190px;
+    min-width: 160px;
+}
+
+.history-date-field label {
+    display: block;
+    margin-bottom: 7px;
+    color: #334155;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.history-date-field input {
+    width: 100%;
+    height: 44px;
+    padding: 0 12px;
+    border: 1px solid #dbe2ea;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #0f172a;
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.history-date-field input:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, .10);
+}
+
+.history-date-separator {
+    color: #64748b;
+    font-size: 13px;
+    font-weight: 600;
+    padding-bottom: 13px;
+}
+
+.history-search-actions {
+    display: flex;
+    gap: 9px;
+    flex-wrap: wrap;
+}
+
+.history-search-button,
+.history-clear-button {
+    height: 44px;
+    padding: 0 18px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    transition: all .2s ease;
+}
+
+.history-search-button {
+    border: 1px solid #2563eb;
+    background: #2563eb;
+    color: #ffffff;
+}
+
+.history-search-button:hover {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+.history-clear-button {
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    color: #475569;
+}
+
+.history-clear-button:hover {
+    border-color: #94a3b8;
+    background: #f8fafc;
+    color: #1e293b;
+}
+
+.attendance-history-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 12px 0 14px;
+}
+
+.history-record-count {
+    color: #64748b;
+    font-size: 13px;
+}
+
+.history-record-count strong {
+    color: #0f172a;
+}
+
+.attendance-history-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.history-page-number,
+.history-page-arrow {
+    min-width: 38px;
+    height: 38px;
+    padding: 0 11px;
+    border: 1px solid #dbe2ea;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #475569;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    box-sizing: border-box;
+    transition: all .2s ease;
+}
+
+.history-page-number:hover,
+.history-page-arrow:hover {
+    border-color: #93c5fd;
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.history-page-number.active {
+    border-color: #2563eb;
+    background: #2563eb;
+    color: #ffffff;
+}
+
+.history-page-arrow.disabled {
+    opacity: .45;
+    pointer-events: none;
+    cursor: default;
+}
+
+.history-page-dots {
+    color: #94a3b8;
+    padding: 0 2px;
+    font-size: 14px;
+}
+
+.history-pagination-info {
+    width: 100%;
+    text-align: center;
+    margin-top: 4px;
+    color: #64748b;
+    font-size: 12px;
+}
+
+.attendance-no-data {
+    text-align: center;
+    padding: 32px 20px;
+    color: #64748b;
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .attendance-overview {
+        grid-template-columns: 1fr;
+    }
+
+    .attendance-gauge-card {
+        width: 100%;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+   The gauge keeps its exact geometry and is scaled as a whole,
+   so needle, arc and ring always stay aligned.
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .member-attendance-page {
+        padding: 25px 18px;
+    }
+
+    .page-header h1 {
+        font-size: 25px;
+    }
+
+    .attendance-gauge-card {
+        padding: 20px 12px;
+    }
+
+    .gauge {
+        transform: scale(0.94);
+        margin-bottom: -13px;
+    }
+
+    .attendance-circle-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px;
+        gap: 20px;
+    }
+
+    .attendance-circle {
+        --size: 160px;
+    }
+
+    .attendance-circle::before {
+        width: 122px;
+        height: 122px;
+    }
+
+    .circle-inner strong {
+        font-size: 26px;
+    }
+
+    .today-header {
+        flex-direction: column;
+    }
+
+    .today-details {
+        grid-template-columns: 1fr;
+    }
+
+    .monthly-attendance-card,
+    .attendance-history-card {
+        padding: 18px;
+    }
+
+    .progress-wrapper {
+        width: 110px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .attendance-history-search {
+        padding: 16px;
+        border-radius: 14px;
+    }
+
+    .history-search-form {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .history-date-field {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .history-date-separator {
+        display: none;
+    }
+
+    .history-search-actions {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+    }
+
+    .history-search-button,
+    .history-clear-button {
+        width: 100%;
+    }
+
+    .attendance-history-summary {
+        align-items: flex-start;
+    }
+
+    .attendance-history-pagination {
+        gap: 5px;
+    }
+
+    .history-page-number,
+    .history-page-arrow {
+        min-width: 36px;
+        height: 36px;
+        padding: 0 9px;
+    }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .history-search-title {
+        font-size: 15px;
+    }
+
+    .history-search-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .history-page-number,
+    .history-page-arrow {
+        min-width: 34px;
+        height: 34px;
+        font-size: 12px;
+    }
+
+    .history-pagination-info {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .member-attendance-page {
+        padding: 20px 12px;
+    }
+
+    .page-header h1 {
+        font-size: 22px;
+    }
+
+    .gauge {
+        transform: scale(0.86);
+        margin-bottom: -30px;
+    }
+
+    .gauge-value strong {
+        font-size: 22px;
+    }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .attendance-circle,
+    .circle-inner strong,
+    .progress-bar {
+        animation: none;
+    }
+}
