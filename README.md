@@ -1,4 +1,4 @@
-::: {align="center"}
+website: https://3.25.154.187/gym-management/
 ![VORTEX FITNESS --- Gym Management
 System](docs/images/vortex-fitness-banner.png)
 
